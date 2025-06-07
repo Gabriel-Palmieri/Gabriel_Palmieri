@@ -10,6 +10,7 @@ import { Navbar } from './components/Navbar';
 import { motion } from 'framer-motion';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import SoftSkills from './components/SoftSkills';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -302,6 +303,14 @@ export default function Home() {
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold text-center mb-16">Competências</h2>
             <Competencias competencias={competencias} />
+        </div>
+      </section>
+
+        {/* Soft Skills Section */}
+        <section id="softskills" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-16">Soft Skills</h2>
+            <SoftSkills />
         </div>
       </section>
 

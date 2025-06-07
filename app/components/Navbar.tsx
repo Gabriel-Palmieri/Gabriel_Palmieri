@@ -39,6 +39,12 @@ export function Navbar() {
               Competências
             </Link>
             <Link
+              href="#softskills"
+              className="text-gray-400 hover:text-[#8A6FE8] transition-colors"
+            >
+              Soft Skills
+            </Link>
+            <Link
               href="#contact"
               className="text-gray-400 hover:text-[#8A6FE8] transition-colors"
             >
