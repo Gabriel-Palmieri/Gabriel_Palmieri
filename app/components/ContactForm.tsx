@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -9,11 +10,38 @@ export default function ContactForm() {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState({
+    type: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica de envio do formulário
-    console.log(formData);
+    setStatus({ type: 'loading', message: 'Enviando mensagem...' });
+
+    try {
+      await emailjs.send(
+        'service_ob6muzd', // Substitua pelo seu Service ID
+        'template_jhdpo89', // Substitua pelo seu Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        'qIz9nZFfGP3GNH2tW' // Substitua pela sua Public Key
+      );
+
+      setStatus({
+        type: 'success',
+        message: 'Mensagem enviada com sucesso!'
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Erro ao enviar mensagem. Tente novamente.'
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -103,6 +131,20 @@ export default function ContactForm() {
           />
         </motion.div>
 
+        {status.message && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className={`text-center p-3 rounded-lg ${
+              status.type === 'success' ? 'bg-green-500/20 text-green-400' :
+              status.type === 'error' ? 'bg-red-500/20 text-red-400' :
+              'bg-blue-500/20 text-blue-400'
+            }`}
+          >
+            {status.message}
+          </motion.div>
+        )}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,12 +156,15 @@ export default function ContactForm() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#8A6FE8] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20"
+            disabled={status.type === 'loading'}
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#8A6FE8] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Enviar Mensagem
-            <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            {status.type === 'loading' ? 'Enviando...' : 'Enviar Mensagem'}
+            {status.type !== 'loading' && (
+              <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            )}
           </motion.button>
         </motion.div>
       </motion.form>

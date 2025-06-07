@@ -108,7 +108,7 @@ export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
             </svg>
           </a>
           <a
-            href="https://www.instagram.com/palmitex"
+            href="https://www.instagram.com/palmieri_012/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-[#8A6FE8] transition-colors transform hover:scale-110"
