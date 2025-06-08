@@ -1,6 +1,10 @@
+'use client';
+
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -78,7 +82,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-sm text-gray-400 text-center"
           >
-            © {currentYear} Todos os direitos reservados
+            © {currentYear} {t('footer.copyright')}
           </motion.p>
         </div>
       </div>

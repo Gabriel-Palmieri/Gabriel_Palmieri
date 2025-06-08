@@ -11,9 +11,11 @@ import { motion } from 'framer-motion';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import SoftSkills from './components/SoftSkills';
+import { useLanguage } from './contexts/LanguageContext';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -22,58 +24,6 @@ export default function Home() {
   if (!mounted) {
     return null;
   }
-
-  // Dados das competências
-  const competencias = [
-    {
-      icon: (
-        <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" fill="currentColor"/>
-        </svg>
-      ),
-      titulo: "Desenvolvimento Frontend",
-      descricao: "Criação de interfaces modernas e responsivas com foco na experiência do usuário.",
-      habilidades: [
-        "React.js e Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "HTML5 e CSS3",
-        "Design Responsivo"
-      ]
-    },
-    {
-      icon: (
-        <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="currentColor"/>
-        </svg>
-      ),
-      titulo: "Desenvolvimento Backend",
-      descricao: "Construção de APIs robustas e escaláveis com boas práticas de desenvolvimento.",
-      habilidades: [
-        "Node.js",
-        "Express",
-        "APIs RESTful",
-        "Bancos de Dados SQL",
-        "Arquitetura MVC"
-      ]
-    },
-    {
-      icon: (
-        <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      titulo: "DevOps e Ferramentas",
-      descricao: "Experiência com ferramentas e práticas modernas de desenvolvimento e deploy.",
-      habilidades: [
-        "Git e GitHub",
-        "Docker",
-        "CI/CD",
-        "AWS",
-        "Linux"
-      ]
-    }
-  ];
 
   const containerAnimation = {
     hidden: { opacity: 0, y: 20 },
@@ -178,15 +128,7 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.5 }}
                   className="inline-block"
                 >
-                  Full-Stack
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  className="text-[#8A6FE8] inline-block ml-2"
-                >
-                  Developer
+                  {t('hero.role')}
                 </motion.span>
               </h1>
             </motion.div>
@@ -195,7 +137,7 @@ export default function Home() {
               variants={itemAnimation}
               className="text-gray-400 text-xl max-w-lg"
             >
-              Cada linha de código é uma oportunidade de transformar ideias em impacto real — e é essa transformação que me move todos os dias.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div 
@@ -223,10 +165,10 @@ export default function Home() {
                 whileTap={{ scale: 0.98 }}
                 className="relative inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-[#8A6FE8] text-white rounded-lg transition-all duration-200 ease-out hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20"
               >
-                Ver Projetos
+                {t('projects.title')}
                 <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                </svg>
               </motion.a>
 
               <motion.a
@@ -235,10 +177,10 @@ export default function Home() {
                 whileTap={{ scale: 0.98 }}
                 className="relative inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-transparent border-2 border-[#8A6FE8] text-[#8A6FE8] rounded-lg transition-all duration-200 ease-out hover:bg-[#8A6FE8]/10 hover:shadow-lg hover:shadow-[#8A6FE8]/20"
               >
-                Contato
+                {t('contact.title')}
                 <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                </svg>
               </motion.a>
             </motion.div>
           </motion.div>
@@ -270,14 +212,9 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
           <div className="container mx-auto">
-            <AboutMe
-              name="Gabriel Palmieri"
-              role="Desenvolvedor Full-Stack"
-              description="Especializado em React, Next.js e TypeScript no front-end, com foco em criar interfaces modernas, performáticas e acessíveis. No back-end, tenho experiência sólida com Node.js, Express, bancos de dados relacionais (PostgreSQL, MySQL), além de boas práticas em APIs REST e autenticação segura. Também atuo com integração de sistemas, versionamento com Git e deploys. Minha motivação vem da vontade de resolver problemas reais através da tecnologia. Acredito que um bom sistema deve ser não apenas funcional, mas também agradável e acessível para todos. Gosto de aprender constantemente, colaborar em equipe e transformar ideias em produtos digitais que fazem a diferença."
-              photoUrl="/me.png"
-            />
-        </div>
-      </section>
+            <AboutMe />
+          </div>
+        </section>
 
         {/* Technologies Section com fundo mais escuro */}
         <section id="tech" className="relative py-20 px-8">
@@ -289,22 +226,71 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl font-bold mb-4">Tecnologias</h2>
+              <h2 className="text-4xl font-bold mb-4">{t('tech.title')}</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Ferramentas e tecnologias que utilizo para criar soluções modernas e eficientes
+                {t('tech.subtitle')}
               </p>
             </motion.div>
             <TechIcons />
-        </div>
-      </section>
+          </div>
+        </section>
 
         {/* Competências Section */}
         <section id="competencias" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-16">Competências</h2>
-            <Competencias competencias={competencias} />
-        </div>
-      </section>
+            <h2 className="text-3xl font-bold text-center mb-16">{t('competencies.title')}</h2>
+            <Competencias competencias={[
+              {
+                icon: (
+                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" fill="currentColor"/>
+                  </svg>
+                ),
+                titleKey: 'competencies.frontend.title',
+                descriptionKey: 'competencies.frontend.description',
+                skillsKeys: [
+                  'competencies.frontend.skills.react',
+                  'competencies.frontend.skills.typescript',
+                  'competencies.frontend.skills.tailwind',
+                  'competencies.frontend.skills.html',
+                  'competencies.frontend.skills.responsive'
+                ]
+              },
+              {
+                icon: (
+                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="currentColor"/>
+                  </svg>
+                ),
+                titleKey: 'competencies.backend.title',
+                descriptionKey: 'competencies.backend.description',
+                skillsKeys: [
+                  'competencies.backend.skills.nodejs',
+                  'competencies.backend.skills.express',
+                  'competencies.backend.skills.rest',
+                  'competencies.backend.skills.sql',
+                  'competencies.backend.skills.mvc'
+                ]
+              },
+              {
+                icon: (
+                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+                titleKey: 'competencies.devops.title',
+                descriptionKey: 'competencies.devops.description',
+                skillsKeys: [
+                  'competencies.devops.skills.git',
+                  'competencies.devops.skills.docker',
+                  'competencies.devops.skills.cicd',
+                  'competencies.devops.skills.aws',
+                  'competencies.devops.skills.linux'
+                ]
+              }
+            ]} />
+          </div>
+        </section>
 
         {/* Soft Skills Section */}
         <section id="softskills" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
@@ -323,38 +309,38 @@ export default function Home() {
               viewport={{ once: false, amount: 0.3 }}
               className="text-4xl font-bold text-center mb-16"
             >
-              Projetos
+              {t('projects.title')}
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
               <ProjectCard
-                title="Thornfield"
-                description="Site elegante para uma marca premium de whisky, apresentando uma experiência imersiva com design sofisticado. Desenvolvido com foco na história da destilaria, processo de fabricação e catálogo de produtos."
+                title={t('projects.thornfield.title')}
+                description={t('projects.thornfield.description')}
                 image="/assets/thornfield.png"
-                technologies={['Next.js', 'TypeScript', 'Tailwind CSS', 'Flowbite React', 'Firebase', 'Node.js']}
+                technologies={[t('tech.nextjs'), t('TypeScript'), t('tech.tailwind'), 'Flowbite React', t('tech.firebase'), t('tech.nodejs')]}
                 githubUrl="https://github.com/Guimenn/Thornfield-a"
                 liveUrl="https://thornfield-a.vercel.app"
               />
               <ProjectCard
-                title="Rimac - Concessionária Digital"
-                description="Este projeto apresenta um site dinâmico sobre a Rimac, desenvolvido com HTML, CSS e JavaScript. Com visual moderno e navegação intuitiva, ele explora a trajetória da marca, seus supercarros elétricos revolucionários e o espírito inovador que a tornou referência no setor automotivo."
+                title={t('projects.rimac.title')}
+                description={t('projects.rimac.description')}
                 image="/assets/rimac.png"
-                technologies={['HTML', 'CSS', 'JavaScript']}
+                technologies={[t('tech.html'), t('tech.css'), t('tech.javascript')]}
                 githubUrl="https://github.com/Guimenn/Rimac"
                 liveUrl="https://guimenn.github.io/Rimac"
               />
               <ProjectCard
-                title="Saldo Verde"
-                description="Saldo Verde é uma aplicação web desenvolvida com o objetivo de ajudar usuários a gerenciar suas finanças pessoais de forma simples, intuitiva e organizada. Com um foco especial na educação financeira, o sistema permite que qualquer pessoa controle receitas, despesas, metas financeiras e categorias personalizadas, visualizando seus hábitos através de gráficos interativos e análises."
+                title={t('projects.saldoverde.title')}
+                description={t('projects.saldoverde.description')}
                 image="/assets/saldo.png"
-                technologies={['Next.js', 'TypeScript', 'Tailwind', 'Node.js', 'Express', 'PostgreSQL']}
+                technologies={[t('tech.nextjs'), t('TypeScript'), t('tech.tailwind'), t('tech.nodejs'), 'Express', 'PostgreSQL']}
                 githubUrl="https://github.com/palmitex/Saldo_Verde"
                 liveUrl="https://projeto-financias.vercel.app/"
               />
               <ProjectCard
-                title="NeoBank - Banco Digital"
-                description="Este projeto apresenta um site de banco digital moderno, desenvolvido com HTML, CSS e JavaScript. Com uma interface intuitiva e funcionalidades essenciais, ele oferece uma experiência de usuário agradável e segura para gerenciar finanças pessoais e bancárias."
+                title={t('projects.neobank.title')}
+                description={t('projects.neobank.description')}
                 image="/assets/neobank.jpeg"
-                technologies={['HTML', 'CSS', 'JavaScript', 'PHP']}
+                technologies={[t('tech.html'), t('tech.css'), t('tech.javascript'), t('tech.php')]}
                 githubUrl="https://github.com/palmitex/NeoBank"
               />
             </div>
@@ -376,9 +362,9 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <h2 className="text-4xl font-bold mb-4">Entre em Contato</h2>
+              <h2 className="text-4xl font-bold mb-4">{t('contact.title')}</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Tem um projeto em mente? Vamos conversar sobre como posso ajudar a transformar suas ideias em realidade.
+                {t('contact.description')}
               </p>
             </motion.div>
 

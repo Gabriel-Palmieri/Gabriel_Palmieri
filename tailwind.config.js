@@ -11,18 +11,17 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#7A00FF',
-          light: '#9933FF',
-          dark: '#6600CC',
-          100: '#E6CCFF',
-          200: '#CC99FF',
-          300: '#B366FF',
-          400: '#9933FF',
-          500: '#7A00FF',
-          600: '#6600CC',
-          700: '#4D0099',
-          800: '#330066',
-          900: '#1A0033'
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49',
         },
         gray: {
           50: '#F9FAFB',
@@ -62,6 +61,7 @@ module.exports = {
         'slide-up': 'slide-up 0.5s ease-out',
         'slide-down': 'slide-down 0.5s ease-out',
         'fade-in': 'fade-in 0.5s ease-out',
+        'fade-out': 'fade-out 0.5s ease-out',
         'bounce-soft': 'bounce-soft 3s ease-in-out infinite',
         'spin-slow': 'spin 3s linear infinite',
         'scale': 'scale 2s ease-in-out infinite',
@@ -106,6 +106,10 @@ module.exports = {
         'fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
         },
         'bounce-soft': {
           '0%, 100%': { transform: 'translateY(-5%)' },

@@ -1,16 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from "next/font/google";
-import { ClientLayout } from './components/ClientLayout';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import { LanguageProvider } from './contexts/LanguageContext';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Gabriel Palmieri - Full Stack Developer',
-  description: 'Portfólio profissional de Gabriel Palmieri, desenvolvedor Full Stack com experiência em React, Next.js, Node.js e mais.',
-  icons: {
-    icon: '/logo-me.png',
-  },
+  title: 'Gabriel Palmieri - Portfolio',
+  description: 'Portfolio pessoal de Gabriel Palmieri, desenvolvedor web full-stack.',
 };
 
 export default function RootLayout({
@@ -21,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <ClientLayout>
+        <LanguageProvider>
           {children}
-        </ClientLayout>
+        </LanguageProvider>
       </body>
     </html>
   );

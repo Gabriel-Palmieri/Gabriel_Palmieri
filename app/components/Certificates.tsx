@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface Certificate {
   id: number;
-  title: string;
+  titleKey: string;
   image: string;
 }
 
@@ -11,6 +14,8 @@ interface CertificatesProps {
 }
 
 export function Certificates({ certificates }: CertificatesProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="grid md:grid-cols-3 gap-6">
       {certificates.map((cert, index) => (
@@ -28,7 +33,7 @@ export function Certificates({ certificates }: CertificatesProps) {
           <div className="relative aspect-[4/3]">
             <Image
               src={cert.image}
-              alt={cert.title}
+              alt={t(cert.titleKey)}
               fill
               className="object-cover rounded-lg"
             />
@@ -36,7 +41,7 @@ export function Certificates({ certificates }: CertificatesProps) {
           
           {/* Título com efeito de fade in */}
           <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <h3 className="text-white text-lg font-semibold">{cert.title}</h3>
+            <h3 className="text-white text-lg font-semibold">{t(cert.titleKey)}</h3>
           </div>
         </div>
       ))}

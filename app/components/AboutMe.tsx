@@ -2,15 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useLanguage } from '../contexts/LanguageContext';
 
-interface AboutMeProps {
-  name: string;
-  role: string;
-  description: string;
-  photoUrl: string;
-}
+export function AboutMe() {
+  const { t } = useLanguage();
 
-export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -30,8 +26,8 @@ export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#8A6FE8] to-[#4A3AFF] opacity-20 blur-lg animate-pulse" />
         <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#8A6FE8]/20">
           <Image
-            src={photoUrl}
-            alt={name}
+            src="/me.png"
+            alt={t('about.title')}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 192px, 256px"
@@ -56,7 +52,7 @@ export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-3xl font-bold mb-2"
           >
-            {name}
+            {t('about.title')}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +61,7 @@ export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-[#8A6FE8] text-xl"
           >
-            {role}
+            {t('hero.role')}
           </motion.p>
         </div>
 
@@ -76,7 +72,7 @@ export function AboutMe({ name, role, description, photoUrl }: AboutMeProps) {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-gray-400 leading-relaxed"
         >
-          {description}
+          {t('about.description')}
         </motion.p>
 
         <motion.div 

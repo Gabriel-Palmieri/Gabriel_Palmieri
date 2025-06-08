@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function ContactForm() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,30 +19,30 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ type: 'loading', message: 'Enviando mensagem...' });
+    setStatus({ type: 'loading', message: t('contact.sending') });
 
     try {
       await emailjs.send(
-        'service_ob6muzd', // Substitua pelo seu Service ID
-        'template_jhdpo89', // Substitua pelo seu Template ID
+        'service_ob6muzd',
+        'template_jhdpo89',
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'qIz9nZFfGP3GNH2tW' // Substitua pela sua Public Key
+        'qIz9nZFfGP3GNH2tW'
       );
 
       setStatus({
         type: 'success',
-        message: 'Mensagem enviada com sucesso!'
+        message: t('contact.success')
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error: unknown) {
       console.error('Erro ao enviar email:', error);
       setStatus({
         type: 'error',
-        message: 'Erro ao enviar mensagem. Tente novamente.'
+        message: t('contact.error')
       });
     }
   };
@@ -76,7 +78,7 @@ export default function ContactForm() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-            Nome
+            {t('contact.name')}
           </label>
           <input
             type="text"
@@ -86,7 +88,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400"
-            placeholder="Seu nome"
+            placeholder={t('contact.namePlaceholder')}
           />
         </motion.div>
 
@@ -97,7 +99,7 @@ export default function ContactForm() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-            Email
+            {t('contact.email')}
           </label>
           <input
             type="email"
@@ -107,7 +109,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400"
-            placeholder="seu@email.com"
+            placeholder={t('contact.emailPlaceholder')}
           />
         </motion.div>
 
@@ -118,7 +120,7 @@ export default function ContactForm() {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-            Mensagem
+            {t('contact.message')}
           </label>
           <textarea
             id="message"
@@ -128,7 +130,7 @@ export default function ContactForm() {
             required
             rows={6}
             className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400 resize-none"
-            placeholder="Sua mensagem..."
+            placeholder={t('contact.messagePlaceholder')}
           />
         </motion.div>
 
@@ -160,7 +162,7 @@ export default function ContactForm() {
             disabled={status.type === 'loading'}
             className="inline-flex items-center justify-center px-8 py-4 bg-[#8A6FE8] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {status.type === 'loading' ? 'Enviando...' : 'Enviar Mensagem'}
+            {status.type === 'loading' ? t('contact.sending') : t('contact.send')}
             {status.type !== 'loading' && (
               <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

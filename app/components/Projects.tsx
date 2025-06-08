@@ -1,10 +1,13 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface Project {
   id: number;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   image: string;
   link: string;
   technologies: string[];
@@ -15,6 +18,8 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects }: ProjectsProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="grid md:grid-cols-2 gap-8">
       {projects.map((project, index) => (
@@ -31,7 +36,7 @@ export function Projects({ projects }: ProjectsProps) {
           <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
             <Image
               src={project.image}
-              alt={project.title}
+              alt={t(project.titleKey)}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
@@ -42,10 +47,10 @@ export function Projects({ projects }: ProjectsProps) {
           {/* Conteúdo */}
           <div className="space-y-3">
             <h3 className="text-xl font-bold text-white group-hover:text-[#8A6FE8] transition-colors">
-              {project.title}
+              {t(project.titleKey)}
             </h3>
             <p className="text-gray-400 line-clamp-2">
-              {project.description}
+              {t(project.descriptionKey)}
             </p>
 
             {/* Tecnologias usadas */}
@@ -55,7 +60,7 @@ export function Projects({ projects }: ProjectsProps) {
                   key={tech}
                   className="px-3 py-1 text-sm bg-[#8A6FE8]/10 text-[#8A6FE8] rounded-full"
                 >
-                  {tech}
+                  {t(`tech.${tech.toLowerCase()}`)}
                 </span>
               ))}
             </div>

@@ -2,11 +2,14 @@
 
 import { TechIcon } from './TechIcon';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function TechIcons() {
+  const { t } = useLanguage();
+  
   const technologies = [
     {
-      name: 'HTML5',
+      nameKey: 'tech.html',
       color: '#E44D26',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -15,7 +18,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'CSS3',
+      nameKey: 'tech.css',
       color: '#1572B6',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -24,7 +27,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'JavaScript',
+      nameKey: 'tech.javascript',
       color: '#F7DF1E',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -33,7 +36,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'React',
+      nameKey: 'tech.react',
       color: '#61DAFB',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -42,7 +45,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Bootstrap',
+      nameKey: 'tech.bootstrap',
       color: '#7952B3',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -51,7 +54,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Firebase',
+      nameKey: 'tech.firebase',
       color: '#FFCA28',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -60,7 +63,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Node.js',
+      nameKey: 'tech.nodejs',
       color: '#339933',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -69,7 +72,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Tailwind',
+      nameKey: 'tech.tailwind',
       color: '#38B2AC',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -78,7 +81,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Next.js',
+      nameKey: 'tech.nextjs',
       color: '#000000',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor">
@@ -89,7 +92,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'MySQL',
+      nameKey: 'tech.mysql',
       color: '#4479A1',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -98,7 +101,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'PHP',
+      nameKey: 'tech.php',
       color: '#777BB4',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -107,7 +110,7 @@ export function TechIcons() {
       )
     },
     {
-      name: 'Git',
+      nameKey: 'tech.git',
       color: '#F05032',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -121,7 +124,7 @@ export function TechIcons() {
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 p-4">
       {technologies.map((tech, index) => (
         <motion.div
-          key={tech.name}
+          key={tech.nameKey}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ 
             opacity: 1, 
@@ -134,7 +137,7 @@ export function TechIcons() {
           viewport={{ once: false, amount: 0.3 }}
         >
           <TechIcon
-            name={tech.name}
+            name={t(tech.nameKey)}
             color={tech.color}
             index={index}
           >
