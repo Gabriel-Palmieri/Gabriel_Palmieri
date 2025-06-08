@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Certificate {
   id: number;
