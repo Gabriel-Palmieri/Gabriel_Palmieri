@@ -9,6 +9,10 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
+interface TranslationsObject {
+  [key: string]: string | TranslationsObject;
+}
+
 export const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
@@ -27,7 +31,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const t = useCallback((key: string) => {
     const translations = getTranslations(language);
     const keys = key.split('.');
-    let value: any = translations;
+    let value: string | TranslationsObject = translations;
     
     for (const k of keys) {
       if (value && typeof value === 'object') {
@@ -37,7 +41,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       }
     }
     
-    return value || key;
+    return typeof value === 'string' ? value : key;
   }, [language]);
 
   return (
