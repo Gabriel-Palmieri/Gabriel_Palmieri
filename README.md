@@ -70,10 +70,3 @@ Desenvolvimento de Sistemas, SENAI Armando de Arruda Pereira - Cursando, conclus
 - 📧 Email: [gabriel1208.palmieri@gmail.com]
 - 💼 LinkedIn: [www.linkedin.com/in/gabriel-palmieri12]
 
-
-<div align="center">
-  <p>Feito com ❤️ por Gabriel Palmieri</p>
-  
-  ![Visitors](https://visitor-badge.glitch.me/badge?page_id=seu-usuario.seu-usuario)
-</div>
-
