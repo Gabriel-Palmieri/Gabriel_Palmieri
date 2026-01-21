@@ -17,7 +17,7 @@ export const pt = {
   },
   about: {
     title: 'Sobre Mim',
-    description: 'Especializado em React, Next.js e TypeScript no front-end, com foco em criar interfaces modernas, performáticas e acessíveis. No back-end, tenho experiência sólida com Node.js, Express, bancos de dados relacionais (PostgreSQL, MySQL), além de boas práticas em APIs REST e autenticação segura. Também atuo com integração de sistemas, versionamento com Git e deploys. Minha motivação vem da vontade de resolver problemas reais através da tecnologia. Acredito que um bom sistema deve ser não apenas funcional, mas também agradável e acessível para todos. Gosto de aprender constantemente, colaborar em equipe e transformar ideias em produtos digitais que fazem a diferença.',
+    description: 'Especializado em React, Next.js e TypeScript no front-end, com foco em criar interfaces modernas, performáticas e acessíveis. No back-end, tenho experiência sólida com Node.js, Express, bancos de dados relacionais (PostgreSQL, MySQL), além de boas práticas em APIs REST e autenticação segura. Também desenvolvo aplicações móveis utilizando React Native, trabalhando com conexão de APIs, compartilhamento de código entre plataformas web e mobile, consistência de design e atenção especial à performance e usabilidade. Atuo ainda com integração de sistemas, versionamento com Git e deploys. Minha motivação vem da vontade de resolver problemas reais através da tecnologia. Acredito que um bom sistema deve ser não apenas funcional, mas também agradável e acessível para todos. Gosto de aprender constantemente, colaborar em equipe e transformar ideias em produtos digitais que fazem a diferença.',
     experience: 'Anos de Experiência',
     projects: 'Projetos Completados',
     clients: 'Clientes Satisfeitos'
@@ -33,6 +33,17 @@ export const pt = {
         tailwind: 'Tailwind CSS',
         html: 'HTML5 e CSS3',
         responsive: 'Design Responsivo'
+      }
+    },
+    mobile: {
+      title: 'Desenvolvimento Mobile',
+      description: 'Desenvolvimento de aplicativos móveis multiplataforma com foco em performance e experiência do usuário.',
+      skills: {
+        flutter: 'Flutter',
+        reactnative: 'React Native',
+        crossplatform: 'Desenvolvimento Cross-Platform',
+        apis: 'Integração com APIs',
+        performance: 'Otimização de Performance'
       }
     },
     backend: {
@@ -151,6 +162,8 @@ export const pt = {
     nextjs: 'Next.js',
     mysql: 'MySQL',
     php: 'PHP',
-    git: 'Git'
+    git: 'Git',
+    flutter: 'Flutter',
+    reactnative: 'React Native'
   }
 }; 

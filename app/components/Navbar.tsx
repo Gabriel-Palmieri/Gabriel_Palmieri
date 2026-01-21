@@ -66,7 +66,7 @@ export function Navbar() {
               {t('navigation.projects')}
             </Link>
             <Link
-              href="#competencies"
+              href="#competencias"
               className="text-gray-400 hover:text-[#8A6FE8] transition-colors"
             >
               {t('navigation.competencies')}
@@ -119,7 +119,7 @@ export function Navbar() {
             {t('navigation.projects')}
           </Link>
           <Link
-            href="#competencies"
+            href="#competencias"
             className="text-gray-400 hover:text-[#8A6FE8] transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >

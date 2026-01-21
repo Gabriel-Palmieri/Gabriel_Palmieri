@@ -13,7 +13,7 @@ export function AboutMe() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col md:flex-row gap-12 items-center"
+      className="relative flex flex-col md:flex-row gap-12 items-center"
     >
       {/* Foto à esquerda */}
       <motion.div 
@@ -26,7 +26,7 @@ export function AboutMe() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#8A6FE8] to-[#4A3AFF] opacity-20 blur-lg animate-pulse" />
         <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#8A6FE8]/20">
           <Image
-            src="/me.png"
+            src="/me.jpeg"
             alt={t('about.title')}
             fill
             className="object-cover"

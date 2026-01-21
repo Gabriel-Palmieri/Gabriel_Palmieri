@@ -17,7 +17,7 @@ export const en = {
   },
   about: {
     title: 'About Me',
-    description: 'Specialized in React, Next.js, and TypeScript for front-end development, focusing on creating modern, performant, and accessible interfaces. On the back-end, I have solid experience with Node.js, Express, relational databases (PostgreSQL, MySQL), along with best practices in REST APIs and secure authentication. I also work with system integration, Git versioning, and deployments. My motivation comes from the desire to solve real problems through technology. I believe that a good system should be not only functional but also pleasant and accessible to everyone. I enjoy continuous learning, team collaboration, and transforming ideas into digital products that make a difference.',
+    description: 'Specialized in React, Next.js, and TypeScript for front-end development, focusing on creating modern, performant, and accessible interfaces. On the back-end, I have solid experience with Node.js, Express, relational databases (PostgreSQL, MySQL), along with best practices in REST APIs and secure authentication. I also develop mobile applications using React Native, working with API connections, code sharing between web and mobile platforms, design consistency, and special attention to performance and usability. I also work with system integration, Git versioning, and deployments. My motivation comes from the desire to solve real problems through technology. I believe that a good system should be not only functional but also pleasant and accessible to everyone. I enjoy continuous learning, team collaboration, and transforming ideas into digital products that make a difference.',
     experience: 'Years of Experience',
     projects: 'Completed Projects',
     clients: 'Satisfied Clients'
@@ -33,6 +33,17 @@ export const en = {
         tailwind: 'Tailwind CSS',
         html: 'HTML5 and CSS3',
         responsive: 'Responsive Design'
+      }
+    },
+    mobile: {
+      title: 'Mobile Development',
+      description: 'Cross-platform mobile app development with focus on performance and user experience.',
+      skills: {
+        flutter: 'Flutter',
+        reactnative: 'React Native',
+        crossplatform: 'Cross-Platform Development',
+        apis: 'API Integration',
+        performance: 'Performance Optimization'
       }
     },
     backend: {
@@ -151,6 +162,8 @@ export const en = {
     nextjs: 'Next.js',
     mysql: 'MySQL',
     php: 'PHP',
-    git: 'Git'
+    git: 'Git',
+    flutter: 'Flutter',
+    reactnative: 'React Native'
   }
 }; 

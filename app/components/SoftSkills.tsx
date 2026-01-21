@@ -101,13 +101,8 @@ export default function SoftSkills() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a123b]/10 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#8A6FE8]/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#8A6FE8]/20 to-transparent" />
-      
-      <div className="relative max-w-6xl mx-auto px-4">
+    <div className="relative">
+      <div className="relative">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -162,6 +157,6 @@ export default function SoftSkills() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 } 

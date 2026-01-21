@@ -22,7 +22,7 @@ export function Competencias({ competencias }: CompetenciasProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.3 }}
-      className="grid md:grid-cols-3 gap-8"
+      className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
     >
       {competencias.map((competencia, index) => (
         <motion.div

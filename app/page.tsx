@@ -111,9 +111,9 @@ export default function Home() {
               filter: 'blur(40px)'
             }}
           />
-      </div>
+        </div>
 
-        <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center relative z-10">
+        <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center relative z-10 px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerAnimation}
             initial="hidden"
@@ -287,6 +287,22 @@ export default function Home() {
                   'competencies.devops.skills.aws',
                   'competencies.devops.skills.linux'
                 ]
+              },
+              {
+                icon: (
+                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM12 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
+                  </svg>
+                ),
+                titleKey: 'competencies.mobile.title',
+                descriptionKey: 'competencies.mobile.description',
+                skillsKeys: [
+                  'competencies.mobile.skills.flutter',
+                  'competencies.mobile.skills.reactnative',
+                  'competencies.mobile.skills.crossplatform',
+                  'competencies.mobile.skills.apis',
+                  'competencies.mobile.skills.performance'
+                ]
               }
             ]} />
           </div>
@@ -296,11 +312,11 @@ export default function Home() {
         <section id="softskills" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
           <div className="container mx-auto">
             <SoftSkills />
-        </div>
-      </section>
+          </div>
+        </section>
 
         {/* Projects Section com fundo especial */}
-        <section id="projects" className="relative py-20 px-4 sm:px-8">
+        <section id="projects" className="relative py-20 px-8">
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a123b]/20 to-transparent" />
           <div className="container mx-auto relative z-10">
             <motion.h2 
@@ -311,7 +327,7 @@ export default function Home() {
             >
               {t('projects.title')}
             </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
               <ProjectCard
                 title={t('projects.thornfield.title')}
                 description={t('projects.thornfield.description')}
@@ -369,11 +385,11 @@ export default function Home() {
             </motion.div>
 
             <ContactForm />
-        </div>
-      </section>
+          </div>
+        </section>
 
         <Footer />
-        </div>
+      </div>
     </main>
   );
 }
