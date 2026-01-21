@@ -17,20 +17,53 @@ export default function ContactForm() {
     message: ''
   });
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus({ type: 'loading', message: t('contact.sending') });
 
     try {
+      // Configurações do EmailJS
+      const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      // Validação das variáveis de ambiente
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        console.error('Variáveis de ambiente EmailJS não encontradas:', {
+          temServiceId: !!SERVICE_ID,
+          temTemplateId: !!TEMPLATE_ID,
+          temPublicKey: !!PUBLIC_KEY,
+          todasEnvVars: Object.keys(process.env).filter(k => k.includes('EMAILJS'))
+        });
+        throw new Error('Configurações do EmailJS não encontradas. Verifique as variáveis de ambiente no Vercel.');
+      }
+
+      // Formata a data e hora atual
+      const now = new Date();
+      const time = now.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      const year = now.getFullYear();
+
       await emailjs.send(
-        'service_ob6muzd',
-        'template_jhdpo89',
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
-          from_name: formData.name,
+          name: formData.name,
+          from_name: formData.name, // Mantido para compatibilidade
           from_email: formData.email,
+          email: formData.email, // Adicionado para referência
           message: formData.message,
+          time: time,
+          subject: `Mensagem de ${formData.name} - ${time}`, // Assunto da mensagem
+          year: year, // Ano atual para o rodapé
         },
-        'qIz9nZFfGP3GNH2tW'
+        PUBLIC_KEY
       );
 
       setStatus({
@@ -40,9 +73,20 @@ export default function ContactForm() {
       setFormData({ name: '', email: '', message: '' });
     } catch (error: unknown) {
       console.error('Erro ao enviar email:', error);
+      
+      // Mensagem de erro mais específica
+      let errorMessage = t('contact.error');
+      if (error instanceof Error) {
+        if (error.message.includes('Configurações')) {
+          errorMessage = 'Erro de configuração. Entre em contato com o administrador.';
+        } else if (error.message.includes('Invalid')) {
+          errorMessage = 'Credenciais inválidas. Verifique as configurações.';
+        }
+      }
+      
       setStatus({
         type: 'error',
-        message: t('contact.error')
+        message: errorMessage
       });
     }
   };
