@@ -94,7 +94,7 @@ export function AboutMe() {
           </a>
           
           <a
-            href="https://www.linkedin.com/in/gabriel-palmiuweri-629086349"
+            href="https://www.linkedin.com/in/gabriel-palmieri12/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-[#8A6FE8] transition-colors transform hover:scale-110"
