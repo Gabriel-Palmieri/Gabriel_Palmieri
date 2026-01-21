@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Gabriel Palmieri - Portfolio',
   description: 'Portfolio pessoal de Gabriel Palmieri, desenvolvedor web full-stack.',
+  icons: {
+    icon: '/logo-me.png',
+    apple: '/logo-me.png',
+  },
 };
 
 export default function RootLayout({
