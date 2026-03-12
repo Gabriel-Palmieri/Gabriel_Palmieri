@@ -170,16 +170,30 @@ export const en = {
     html: 'HTML5',
     css: 'CSS3',
     javascript: 'JavaScript',
+    typescript: 'TypeScript',
     react: 'React',
     bootstrap: 'Bootstrap',
     firebase: 'Firebase',
     nodejs: 'Node.js',
+    nestjs: 'NestJS',
     tailwind: 'Tailwind',
     nextjs: 'Next.js',
     mysql: 'MySQL',
+    postgresql: 'PostgreSQL',
+    prisma: 'Prisma',
     php: 'PHP',
     git: 'Git',
+    docker: 'Docker',
     flutter: 'Flutter',
     reactnative: 'React Native'
+  },
+  techstack: {
+    title: 'Technologies I Work With',
+    subtitle: 'Complete stack of technologies and tools I master for full-stack development',
+    frontend: 'Frontend',
+    backend: 'Backend',
+    database: 'Database',
+    mobile: 'Mobile',
+    tools: 'Tools'
   }
 }; 

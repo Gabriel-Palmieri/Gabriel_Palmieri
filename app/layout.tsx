@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     icon: '/logo-me.png',
     apple: '/logo-me.png',
   },
+  themeColor: '#0B0B0F',
 };
 
 export default function RootLayout({
@@ -20,8 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>
+    <html lang="pt-BR" style={{ backgroundColor: '#0B0B0F' }}>
+      <head>
+        <meta name="theme-color" content="#0B0B0F" />
+      </head>
+      <body className={inter.className} style={{ backgroundColor: '#0B0B0F' }}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

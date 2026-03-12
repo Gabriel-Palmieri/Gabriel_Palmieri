@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AboutMe } from './components/AboutMe';
-import { TechIcons } from './components/TechIcons';
-import { Competencias } from './components/Competencias';
+import { TechStack } from './components/TechStack';
 import { HeroIllustration } from './components/HeroIllustration';
 import { Navbar } from './components/Navbar';
 import { PortfolioLoading } from './components/PortfolioLoading';
@@ -225,95 +224,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Technologies Section com fundo mais escuro */}
+        {/* Technologies & Skills Section - Combined */}
         <section id="tech" className="relative py-20 px-8">
           <div className="absolute inset-0 bg-[#1a123b]/10 backdrop-blur-sm" />
           <div className="container mx-auto relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-bold mb-4">{t('tech.title')}</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                {t('tech.subtitle')}
-              </p>
-            </motion.div>
-            <TechIcons />
-          </div>
-        </section>
-
-        {/* Competências Section */}
-        <section id="competencias" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-16">{t('competencies.title')}</h2>
-            <Competencias competencias={[
-              {
-                icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" fill="currentColor"/>
-                  </svg>
-                ),
-                titleKey: 'competencies.frontend.title',
-                descriptionKey: 'competencies.frontend.description',
-                skillsKeys: [
-                  'competencies.frontend.skills.react',
-                  'competencies.frontend.skills.typescript',
-                  'competencies.frontend.skills.tailwind',
-                  'competencies.frontend.skills.html',
-                  'competencies.frontend.skills.responsive'
-                ]
-              },
-              {
-                icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="currentColor"/>
-                  </svg>
-                ),
-                titleKey: 'competencies.backend.title',
-                descriptionKey: 'competencies.backend.description',
-                skillsKeys: [
-                  'competencies.backend.skills.nodejs',
-                  'competencies.backend.skills.express',
-                  'competencies.backend.skills.rest',
-                  'competencies.backend.skills.sql',
-                  'competencies.backend.skills.mvc'
-                ]
-              },
-              {
-                icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                titleKey: 'competencies.devops.title',
-                descriptionKey: 'competencies.devops.description',
-                skillsKeys: [
-                  'competencies.devops.skills.git',
-                  'competencies.devops.skills.docker',
-                  'competencies.devops.skills.cicd',
-                  'competencies.devops.skills.aws',
-                  'competencies.devops.skills.linux'
-                ]
-              },
-              {
-                icon: (
-                  <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM12 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="currentColor"/>
-                  </svg>
-                ),
-                titleKey: 'competencies.mobile.title',
-                descriptionKey: 'competencies.mobile.description',
-                skillsKeys: [
-                  'competencies.mobile.skills.flutter',
-                  'competencies.mobile.skills.reactnative',
-                  'competencies.mobile.skills.crossplatform',
-                  'competencies.mobile.skills.apis',
-                  'competencies.mobile.skills.performance'
-                ]
-              }
-            ]} />
+            <TechStack />
           </div>
         </section>
 
@@ -418,7 +333,7 @@ export default function Home() {
                 descriptionKey: 'projects.saldoverde.description',
                 image: '/assets/saldo.png',
                 liveUrl: 'https://projeto-financias.vercel.app/',
-                githubUrl: 'https://github.com/palmitex/Saldo_Verde',
+                githubUrl: 'https://github.com/Gabriel-Palmieri/Saldo_Verde',
                 year: '2024',
                 features: [
                   'projects.saldoverde.feature1',
@@ -446,7 +361,7 @@ export default function Home() {
                 titleKey: 'projects.neobank.title',
                 descriptionKey: 'projects.neobank.description',
                 image: '/assets/neobank.jpeg',
-                githubUrl: 'https://github.com/palmitex/NeoBank',
+                githubUrl: 'https://github.com/Gabriel-Palmieri/NeoBank',
                 year: '2024',
                 features: [
                   'projects.neobank.feature1',

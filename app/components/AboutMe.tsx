@@ -83,7 +83,7 @@ export function AboutMe() {
           className="flex justify-center md:justify-start gap-6"
         >
           <a
-            href="https://github.com/palmitex"
+            href="https://github.com/Gabriel-Palmieri"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-[#8A6FE8] transition-colors transform hover:scale-110"
