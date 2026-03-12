@@ -83,19 +83,35 @@ export const en = {
     technologies: 'Technologies Used',
     thornfield: {
       title: 'Thornfield',
-      description: 'Elegant website for a premium whiskey brand, featuring an immersive experience with sophisticated design. Developed with a focus on distillery history, manufacturing process, and product catalog.'
+      description: 'Elegant website for a premium whiskey brand, featuring an immersive experience with sophisticated design. Developed with a focus on distillery history, manufacturing process, and product catalog.',
+      feature1: 'Sophisticated and immersive design with smooth animations',
+      feature2: 'Authentication system with Firebase',
+      feature3: 'Responsive interface optimized for all devices',
+      feature4: 'Interactive premium product catalog'
     },
     rimac: {
-      title: 'Rimac - Digital Dealership',
-      description: 'This project presents a dynamic website about Rimac, developed with HTML, CSS, and JavaScript. With modern visuals and intuitive navigation, it explores the brand\'s journey, its revolutionary electric supercars, and the innovative spirit that made it a reference in the automotive sector.'
+      title: 'MobiliAI',
+      description: 'Digital platform for the furniture sector that simulates a real market scenario and solves the customer\'s difficulty in visualizing products before purchase. The solution integrates user experience, automation and Artificial Intelligence, with intelligent chatbot, furniture visualization in real environments, real-time POS integration and administrative structure for system management and support.',
+      feature1: 'Intelligent AI chatbot for customer service',
+      feature2: 'Furniture visualization in real environments',
+      feature3: 'Real-time POS integration',
+      feature4: 'Complete administrative system for management'
     },
     saldoverde: {
       title: 'Saldo Verde',
-      description: 'Saldo Verde is a web application developed to help users manage their personal finances in a simple, intuitive, and organized way. With a special focus on financial education, the system allows anyone to control income, expenses, financial goals, and custom categories, visualizing their habits through interactive graphs and analyses.'
+      description: 'Saldo Verde is a web application developed to help users manage their personal finances in a simple, intuitive, and organized way. With a special focus on financial education, the system allows anyone to control income, expenses, financial goals, and custom categories, visualizing their habits through interactive graphs and analyses.',
+      feature1: 'Complete control of income and expenses',
+      feature2: 'Interactive charts for financial analysis',
+      feature3: 'Custom goals and categories system',
+      feature4: 'Robust backend with Node.js and MySQL'
     },
     neobank: {
       title: 'NeoBank - Digital Bank',
-      description: 'This project presents a modern digital banking website, developed with HTML, CSS, and JavaScript. With an intuitive interface and essential features, it offers a pleasant and secure user experience for managing personal and banking finances.'
+      description: 'This project presents a modern digital banking website, developed with HTML, CSS, and JavaScript. With an intuitive interface and essential features, it offers a pleasant and secure user experience for managing personal and banking finances.',
+      feature1: 'Intuitive and modern interface',
+      feature2: 'Financial management system',
+      feature3: 'Backend with PHP and database',
+      feature4: 'Responsive and accessible design'
     }
   },
   contact: {

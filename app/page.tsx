@@ -3,26 +3,35 @@
 import { useEffect, useState } from 'react';
 import { AboutMe } from './components/AboutMe';
 import { TechIcons } from './components/TechIcons';
-import { ProjectCard } from './components/ProjectCard';
 import { Competencias } from './components/Competencias';
 import { HeroIllustration } from './components/HeroIllustration';
 import { Navbar } from './components/Navbar';
+import { PortfolioLoading } from './components/PortfolioLoading';
 import { motion } from 'framer-motion';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import SoftSkills from './components/SoftSkills';
 import { useLanguage } from './contexts/LanguageContext';
+import { ModernProjects } from './components/ModernProjects';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
+    
+    // Simula carregamento mínimo de 2 segundos
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  if (!mounted) {
-    return null;
+  if (!mounted || loading) {
+    return <PortfolioLoading />;
   }
 
   const containerAnimation = {
@@ -327,39 +336,140 @@ export default function Home() {
             >
               {t('projects.title')}
             </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-              <ProjectCard
-                title={t('projects.thornfield.title')}
-                description={t('projects.thornfield.description')}
-                image="/assets/thornfield.png"
-                technologies={[t('tech.nextjs'), t('TypeScript'), t('tech.tailwind'), 'Flowbite React', t('tech.firebase'), t('tech.nodejs')]}
-                githubUrl="https://github.com/Guimenn/Thornfield-a"
-                liveUrl="https://thornfield-a.vercel.app"
-              />
-              <ProjectCard
-                title={t('projects.rimac.title')}
-                description={t('projects.rimac.description')}
-                image="/assets/rimac.png"
-                technologies={[t('tech.html'), t('tech.css'), t('tech.javascript')]}
-                githubUrl="https://github.com/Guimenn/Rimac"
-                liveUrl="https://guimenn.github.io/Rimac"
-              />
-              <ProjectCard
-                title={t('projects.saldoverde.title')}
-                description={t('projects.saldoverde.description')}
-                image="/assets/saldo.png"
-                technologies={[t('tech.nextjs'), t('TypeScript'), t('tech.tailwind'), t('tech.nodejs'), 'Express', 'PostgreSQL']}
-                githubUrl="https://github.com/palmitex/Saldo_Verde"
-                liveUrl="https://projeto-financias.vercel.app/"
-              />
-              <ProjectCard
-                title={t('projects.neobank.title')}
-                description={t('projects.neobank.description')}
-                image="/assets/neobank.jpeg"
-                technologies={[t('tech.html'), t('tech.css'), t('tech.javascript'), t('tech.php')]}
-                githubUrl="https://github.com/palmitex/NeoBank"
-              />
-            </div>
+            <ModernProjects projects={[
+              // 2025 - Mais novos
+              {
+                id: 1,
+                titleKey: 'projects.rimac.title',
+                descriptionKey: 'projects.rimac.description',
+                image: ['/assets/mobilia1.png', '/assets/mobilia2.png', '/assets/mobilia3.png'],
+                githubUrl: 'https://github.com/Guimenn/MobiliAI',
+                year: '2025',
+                features: [
+                  'projects.rimac.feature1',
+                  'projects.rimac.feature2',
+                  'projects.rimac.feature3',
+                  'projects.rimac.feature4'
+                ],
+                technologies: [
+                  {
+                    name: 'Next.js',
+                    icon: (<svg></svg>)
+                  },
+
+                  {
+                    name: 'Tailwind CSS',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'NestJS',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'PostgreSQL',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'Prisma ORM',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'OpenAI API',
+                    icon: (<svg></svg>)
+                  }
+                ]
+              },
+              {
+                id: 2,
+                titleKey: 'projects.thornfield.title',
+                descriptionKey: 'projects.thornfield.description',
+                image: '/assets/thornfield.png',
+                liveUrl: 'https://thornfield-a.vercel.app',
+                githubUrl: 'https://github.com/Guimenn/Thornfield-a',
+                year: '2025',
+                features: [
+                  'projects.thornfield.feature1',
+                  'projects.thornfield.feature2',
+                  'projects.thornfield.feature3',
+                  'projects.thornfield.feature4'
+                ],
+                technologies: [
+                  {
+                    name: 'Next.js',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'Tailwind CSS',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'TypeScript',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'Firebase',
+                    icon: (<svg></svg>)
+                  }
+                ]
+              },
+              {
+                id: 3,
+                titleKey: 'projects.saldoverde.title',
+                descriptionKey: 'projects.saldoverde.description',
+                image: '/assets/saldo.png',
+                liveUrl: 'https://projeto-financias.vercel.app/',
+                githubUrl: 'https://github.com/palmitex/Saldo_Verde',
+                year: '2024',
+                features: [
+                  'projects.saldoverde.feature1',
+                  'projects.saldoverde.feature2',
+                  'projects.saldoverde.feature3',
+                  'projects.saldoverde.feature4'
+                ],
+                technologies: [
+                  {
+                    name: 'Next.js',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'Node.js',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'MySQL',
+                    icon: (<svg></svg>)
+                  }
+                ]
+              },
+              {
+                id: 4,
+                titleKey: 'projects.neobank.title',
+                descriptionKey: 'projects.neobank.description',
+                image: '/assets/neobank.jpeg',
+                githubUrl: 'https://github.com/palmitex/NeoBank',
+                year: '2024',
+                features: [
+                  'projects.neobank.feature1',
+                  'projects.neobank.feature2',
+                  'projects.neobank.feature3',
+                  'projects.neobank.feature4'
+                ],
+                technologies: [
+                  {
+                    name: 'HTML5',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'CSS3',
+                    icon: (<svg></svg>)
+                  },
+                  {
+                    name: 'PHP',
+                    icon: (<svg></svg>)
+                  }
+                ]
+              }
+            ]} />
           </div>
         </section>
 
