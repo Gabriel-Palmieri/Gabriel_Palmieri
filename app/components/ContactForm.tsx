@@ -121,7 +121,7 @@ export default function ContactForm() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-[#d8d0c3]">
             {t('contact.name')}
           </label>
           <input
@@ -131,7 +131,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400"
+            className="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 text-white placeholder-[#8d8982] transition-colors focus:border-[#c99a4a] focus:outline-none"
             placeholder={t('contact.namePlaceholder')}
           />
         </motion.div>
@@ -142,7 +142,7 @@ export default function ContactForm() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#d8d0c3]">
             {t('contact.email')}
           </label>
           <input
@@ -152,7 +152,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400"
+            className="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 text-white placeholder-[#8d8982] transition-colors focus:border-[#c99a4a] focus:outline-none"
             placeholder={t('contact.emailPlaceholder')}
           />
         </motion.div>
@@ -163,7 +163,7 @@ export default function ContactForm() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="message" className="mb-2 block text-sm font-medium text-[#d8d0c3]">
             {t('contact.message')}
           </label>
           <textarea
@@ -173,7 +173,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 bg-[#1a123b]/20 border border-[#8A6FE8]/20 rounded-lg focus:outline-none focus:border-[#8A6FE8] transition-colors text-white placeholder-gray-400 resize-none"
+            className="w-full resize-none rounded-md border border-white/15 bg-white/5 px-4 py-3 text-white placeholder-[#8d8982] transition-colors focus:border-[#c99a4a] focus:outline-none"
             placeholder={t('contact.messagePlaceholder')}
           />
         </motion.div>
@@ -204,7 +204,7 @@ export default function ContactForm() {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={status.type === 'loading'}
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#8A6FE8] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 font-medium text-[#171717] transition-all duration-200 hover:bg-[#f6f3ee] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {status.type === 'loading' ? t('contact.sending') : t('contact.send')}
             {status.type !== 'loading' && (

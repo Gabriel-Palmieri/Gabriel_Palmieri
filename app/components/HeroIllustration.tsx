@@ -1,128 +1,189 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
+const editorLines = [
+  { number: '01', parts: [{ text: 'export', tone: 'blue' }, { text: ' async function', tone: 'muted' }, { text: ' run()', tone: 'gold' }] },
+  { number: '02', parts: [{ text: '  const', tone: 'blue' }, { text: ' api', tone: 'muted' }, { text: ' = await connect()', tone: 'soft' }] },
+  { number: '03', parts: [{ text: '  const', tone: 'blue' }, { text: ' data', tone: 'muted' }, { text: ' = await api.projects()', tone: 'soft' }] },
+  { number: '04', parts: [{ text: '  return', tone: 'blue' }, { text: ' <Stack data={data} />', tone: 'gold' }] },
+  { number: '05', parts: [{ text: '}', tone: 'muted' }] }
+];
+
+const glowVariants = {
+  animate: {
+    opacity: [0.35, 0.75, 0.35],
+    scale: [1, 1.06, 1]
+  }
+};
+
+function toneClass(tone: string) {
+  const tones: Record<string, string> = {
+    blue: 'text-[#8fb4be]',
+    gold: 'text-[#b08a57]',
+    muted: 'text-[#d8d0c3]',
+    soft: 'text-[#aaa59b]'
+  };
+
+  return tones[tone] ?? tones.muted;
+}
+
 export function HeroIllustration() {
   return (
-    <div className="relative w-full h-full">
-      <svg
-        viewBox="0 0 800 800"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
+    <div className="relative h-full w-full overflow-hidden bg-[#030405]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_22%,rgba(143,180,190,0.08),transparent_28%),linear-gradient(145deg,#050607_0%,#030405_55%,#020303_100%)]" />
+
+      <motion.div
+        className="absolute left-12 top-16 h-36 w-36 rounded-full bg-[#8fb4be]/8 blur-3xl"
+        variants={glowVariants}
+        animate="animate"
+        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-12 right-14 h-40 w-40 rounded-full bg-[#b08a57]/8 blur-3xl"
+        variants={glowVariants}
+        animate="animate"
+        transition={{ duration: 5.8, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+      />
+
+      <div className="absolute inset-5 rounded-[1.75rem] border border-white/10 bg-[#050607]/88 shadow-[0_30px_110px_rgba(0,0,0,0.55)]" />
+
+      <motion.div
+        className="absolute left-[7%] top-[9%] h-[67%] w-[62%] overflow-hidden rounded-2xl border border-white/10 bg-[#030405] shadow-[0_24px_80px_rgba(0,0,0,0.48)]"
+        initial={{ opacity: 0, y: 20, rotateX: 8 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{ duration: 0.65, ease: 'easeOut' }}
       >
-        {/* Monitor Base */}
-        <rect
-          x="150"
-          y="200"
-          width="500"
-          height="350"
-          rx="20"
-          fill="#1a123b"
-          className="animate-pulse"
+        <div className="flex h-11 items-center justify-between border-b border-white/10 bg-[#070809] px-4">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#b08a57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#8fb4be]/50" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          </div>
+          <div className="text-xs text-[#8e8981]">app/page.tsx</div>
+        </div>
+
+        <div className="grid h-[calc(100%-44px)] grid-cols-[104px_1fr]">
+          <div className="border-r border-white/10 bg-[#020303] p-3 text-[11px]">
+            {['app', 'components', 'api', 'schema'].map((item, index) => (
+              <motion.div
+                key={item}
+                className={`mb-2 rounded-md px-2 py-2 ${
+                  index === 1 ? 'bg-[#8fb4be]/8 text-[#d9eef2]' : 'text-[#6f7678]'
+                }`}
+                animate={index === 1 ? { opacity: [0.75, 1, 0.75] } : undefined}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                {item}
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="relative p-5 font-mono text-xs leading-7">
+            <div className="absolute right-4 top-4 rounded-full border border-[#8fb4be]/20 bg-[#8fb4be]/8 px-3 py-1 text-[11px] text-[#d9eef2]">
+              Full-stack
+            </div>
+
+            {editorLines.map((line, index) => (
+              <motion.div
+                key={line.number}
+                className="flex gap-4 whitespace-nowrap"
+                initial={{ opacity: 0, x: -14 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.14, duration: 0.35 }}
+              >
+                <span className="w-5 text-right text-[#4d5558]">{line.number}</span>
+                <span>
+                  {line.parts.map((part, partIndex) => (
+                    <span key={`${line.number}-${partIndex}`} className={toneClass(part.tone)}>
+                      {part.text}
+                    </span>
+                  ))}
+                </span>
+              </motion.div>
+            ))}
+
+            <motion.div
+              className="mt-4 h-px bg-gradient-to-r from-transparent via-[#8fb4be]/35 to-transparent"
+              animate={{ x: ['-30%', '30%', '-30%'] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+
+            <motion.span
+              className="ml-9 mt-4 inline-block h-5 w-2 bg-[#8fb4be]"
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.9, repeat: Infinity }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-[9%] right-[7%] w-[46%] rounded-2xl border border-white/10 bg-[#070809] p-4 font-mono text-xs shadow-[0_20px_70px_rgba(0,0,0,0.55)]"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, delay: 0.25, ease: 'easeOut' }}
+      >
+        <div className="mb-3 flex items-center justify-between text-[#8e8981]">
+          <span>terminal</span>
+          <span>localhost:3000</span>
+        </div>
+        <div className="space-y-2 text-[#c9c4bb]">
+          <p><span className="text-[#8fb4be]">$</span> npm run build</p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.75 }}
+          >
+            <span className="text-[#b08a57]">✓</span> routes compiled
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.05 }}
+          >
+            <span className="text-[#b08a57]">✓</span> api connected
+          </motion.p>
+        </div>
+      </motion.div>
+
+      <div className="absolute right-[8%] top-[18%] hidden w-[23%] space-y-3 lg:block">
+        {['React UI', 'Node API', 'PostgreSQL'].map((label, index) => (
+          <motion.div
+            key={label}
+            className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#070809]/95 p-3 text-xs text-[#d8d0c3] shadow-[0_14px_40px_rgba(0,0,0,0.35)]"
+            initial={{ opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.45 + index * 0.14, duration: 0.35 }}
+          >
+            <motion.span
+              className="h-2.5 w-2.5 rounded-full bg-[#8fb4be]"
+              animate={{ scale: [1, 1.45, 1], opacity: [0.55, 1, 0.55] }}
+              transition={{ duration: 1.8, repeat: Infinity, delay: index * 0.2 }}
+            />
+            {label}
+          </motion.div>
+        ))}
+      </div>
+
+      <svg className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 760 640" fill="none">
+        <motion.path
+          d="M430 170 C520 170 555 215 610 215"
+          stroke="rgba(143,180,190,0.22)"
+          strokeWidth="1"
+          strokeDasharray="6 8"
+          animate={{ pathLength: [0.15, 1, 0.15] }}
+          transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <rect
-          x="170"
-          y="220"
-          width="460"
-          height="310"
-          rx="10"
-          fill="#0a0225"
+        <motion.path
+          d="M410 302 C520 302 555 310 610 310"
+          stroke="rgba(176,138,87,0.2)"
+          strokeWidth="1"
+          strokeDasharray="6 8"
+          animate={{ pathLength: [0.15, 1, 0.15] }}
+          transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
         />
-
-        {/* Código animado dentro do monitor */}
-        <g className="animate-blink">
-          <rect x="200" y="250" width="200" height="20" fill="#8A6FE8" opacity="0.5" />
-          <rect x="200" y="290" width="300" height="20" fill="#4A3AFF" opacity="0.3" />
-          <rect x="200" y="330" width="250" height="20" fill="#8A6FE8" opacity="0.5" />
-          <rect x="200" y="370" width="280" height="20" fill="#4A3AFF" opacity="0.3" />
-          <rect x="200" y="410" width="180" height="20" fill="#8A6FE8" opacity="0.5" />
-          <rect x="200" y="450" width="220" height="20" fill="#4A3AFF" opacity="0.3" />
-        </g>
-
-        {/* Base do Monitor */}
-        <path
-          d="M300 550 L500 550 L460 600 L340 600 Z"
-          fill="#1a123b"
-        />
-
-        {/* Engrenagem grande central */}
-        <g className="animate-spin-slow" style={{ transformOrigin: '600px 400px' }}>
-          <path
-            d="M650 400c0-27.614-22.386-50-50-50s-50 22.386-50 50 22.386 50 50 50 50-22.386 50-50zm-80 0c0-16.569 13.431-30 30-30s30 13.431 30 30-13.431 30-30 30-30-13.431-30-30z"
-            fill="#8A6FE8"
-          />
-          <path
-            d="M600 320v30m0 100v30m80-80h-30m-100 0h-30"
-            stroke="#8A6FE8"
-            strokeWidth="12"
-            className="animate-pulse"
-          />
-        </g>
-
-        {/* Engrenagem pequena superior */}
-        <g className="animate-spin-reverse" style={{ transformOrigin: '500px 250px' }}>
-          <path
-            d="M530 250c0-16.569-13.431-30-30-30s-30 13.431-30 30 13.431 30 30 30 30-13.431 30-30zm-45 0c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15-15z"
-            fill="#4A3AFF"
-          />
-          <path
-            d="M500 210v15m0 50v15m40-40h-15m-50 0h-15"
-            stroke="#4A3AFF"
-            strokeWidth="6"
-          />
-        </g>
-
-        {/* Partículas flutuantes */}
-        <g className="animate-float">
-          <circle cx="250" cy="200" r="8" fill="#8A6FE8" opacity="0.5" />
-          <circle cx="650" cy="280" r="6" fill="#4A3AFF" opacity="0.3" />
-          <circle cx="450" cy="150" r="10" fill="#8A6FE8" opacity="0.4" />
-          <circle cx="700" cy="450" r="8" fill="#4A3AFF" opacity="0.3" />
-          <circle cx="200" cy="500" r="12" fill="#8A6FE8" opacity="0.5" />
-          <circle cx="350" cy="600" r="8" fill="#4A3AFF" opacity="0.4" />
-        </g>
-
-        {/* Linhas de conexão */}
-        <g className="animate-pulse">
-          <path
-            d="M250 150 Q400 50 550 150"
-            stroke="#8A6FE8"
-            strokeWidth="2"
-            strokeDasharray="8 8"
-            fill="none"
-          />
-          <path
-            d="M150 400 Q250 500 150 600"
-            stroke="#4A3AFF"
-            strokeWidth="2"
-            strokeDasharray="8 8"
-            fill="none"
-          />
-          <path
-            d="M650 200 Q700 300 650 400"
-            stroke="#8A6FE8"
-            strokeWidth="2"
-            strokeDasharray="8 8"
-            fill="none"
-          />
-        </g>
-
-        {/* Símbolos de código */}
-        <g className="animate-float">
-          <text x="150" y="180" fill="#8A6FE8" className="text-2xl" opacity="0.5">{`{}`}</text>
-          <text x="650" y="480" fill="#4A3AFF" className="text-2xl" opacity="0.3">{`</>`}</text>
-          <text x="700" y="280" fill="#8A6FE8" className="text-2xl" opacity="0.4">{`()`}</text>
-        </g>
-
-        {/* Efeito de brilho nas engrenagens */}
-        <defs>
-          <radialGradient id="gearGlow" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%" stopColor="#8A6FE8" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#8A6FE8" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="600" cy="400" r="70" fill="url(#gearGlow)" className="animate-pulse" />
-        <circle cx="500" cy="250" r="40" fill="url(#gearGlow)" className="animate-pulse" />
       </svg>
     </div>
   );
-} 
+}

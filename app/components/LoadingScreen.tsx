@@ -22,7 +22,7 @@ export function LoadingScreen() {
   const [sparkles, setSparkles] = useState<SparkleProps[]>([]);
 
   useEffect(() => {
-    const colors = ['#8A6FE8', '#4A3AFF', '#9945FF', '#14F195'];
+    const colors = ['#0b1114', '#11191d', '#8fb4be', '#b08a57'];
     const newSparkles = Array(50).fill(null).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -41,7 +41,7 @@ export function LoadingScreen() {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0225] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050607] overflow-hidden">
       {/* Efeito de Nebulosa */}
       <div className="nebula-effect">
         <div className="nebula nebula-1"></div>
@@ -101,7 +101,7 @@ export function LoadingScreen() {
           >
             <motion.path
               d="M12 2L2 7L12 12L22 7L12 2Z"
-              stroke="#8A6FE8"
+              stroke="#8fb4be"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -115,7 +115,7 @@ export function LoadingScreen() {
             />
             <motion.path
               d="M2 17L12 22L22 17"
-              stroke="#8A6FE8"
+              stroke="#11191d"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -130,7 +130,7 @@ export function LoadingScreen() {
             />
             <motion.path
               d="M2 12L12 17L22 12"
-              stroke="#8A6FE8"
+              stroke="#8fb4be"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -163,15 +163,15 @@ export function LoadingScreen() {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#8A6FE8] to-[#4A3AFF] text-transparent bg-clip-text typing-text"
+            className="text-2xl font-bold mb-4 text-[#f4f1ea] typing-text"
           >
             Carregando seu portfólio...
           </motion.h2>
           
           {/* Barra de progresso */}
-          <div className="w-64 h-1 bg-[#1a123b] rounded-full overflow-hidden mx-auto">
+          <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden mx-auto">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#8A6FE8] to-[#4A3AFF]"
+              className="h-full bg-[#11191d]"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{

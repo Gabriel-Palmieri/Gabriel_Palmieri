@@ -1,9 +1,6 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { LanguageProvider } from './contexts/LanguageContext';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Gabriel Palmieri - Portfolio',
@@ -12,7 +9,10 @@ export const metadata: Metadata = {
     icon: '/logo-me.png',
     apple: '/logo-me.png',
   },
-  themeColor: '#0B0B0F',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#030405',
 };
 
 export default function RootLayout({
@@ -21,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" style={{ backgroundColor: '#0B0B0F' }}>
+    <html lang="pt-BR" style={{ backgroundColor: '#030405' }}>
       <head>
-        <meta name="theme-color" content="#0B0B0F" />
+        <meta name="theme-color" content="#030405" />
       </head>
-      <body className={inter.className} style={{ backgroundColor: '#0B0B0F' }}>
+      <body style={{ backgroundColor: '#030405' }}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

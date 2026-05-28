@@ -25,7 +25,7 @@ export const en = {
   competencies: {
     title: 'Competencies',
     frontend: {
-      title: 'Frontend Development',
+      title: 'Full-stack Development',
       description: 'Creation of modern and responsive interfaces focused on user experience.',
       skills: {
         react: 'React.js and Next.js',
@@ -71,7 +71,7 @@ export const en = {
   },
   skills: {
     title: 'Technical Skills',
-    frontend: 'Frontend',
+    frontend: 'Full-stack',
     backend: 'Backend',
     database: 'Database',
     tools: 'Tools'
@@ -190,7 +190,7 @@ export const en = {
   techstack: {
     title: 'Technologies I Work With',
     subtitle: 'Complete stack of technologies and tools I master for full-stack development',
-    frontend: 'Frontend',
+    frontend: 'Full-stack',
     backend: 'Backend',
     database: 'Database',
     mobile: 'Mobile',

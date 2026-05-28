@@ -29,7 +29,7 @@ body {
 body {
   background-color: #0B0B0F;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Animações suaves */
@@ -4117,4 +4117,49 @@ section::before {
     transform: translate(-25px, 15px) scale(1.05) rotate(270deg);
     opacity: 0.35;
   }
+}
+
+/* Minimal portfolio reset */
+:root {
+  --foreground-rgb: 244, 241, 234;
+  --background-start-rgb: 15, 17, 16;
+  --background-end-rgb: 15, 17, 16;
+  --primary: #0b1114;
+  --primary-dark: #050708;
+  --primary-glow: rgba(8, 13, 15, 0.34);
+  --pink: #b08a57;
+  --mixed-glow: rgba(176, 138, 87, 0.14);
+}
+
+html,
+body {
+  background: #030405;
+  color: #f4f1ea;
+}
+
+::selection {
+  background: #0b1114;
+  color: #030405;
+}
+
+::-webkit-scrollbar-track {
+  background: #030405;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #303632;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0b1114;
+}
+
+.gradient-text {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+  animation: none;
 }

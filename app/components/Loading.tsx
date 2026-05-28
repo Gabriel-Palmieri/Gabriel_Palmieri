@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Loading() {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#0a0225] text-white">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#050607] text-white">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -13,13 +13,13 @@ export default function Loading() {
       >
         <h1 className="text-4xl font-bold mb-2">
           Welcome To My
-          <span className="block text-[#8A6FE8]">Portfolio Website</span>
+          <span className="block text-[#f4f1ea]">Portfolio Website</span>
         </h1>
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="h-1 bg-gradient-to-r from-[#8A6FE8] to-[#4A3AFF] mt-4 rounded-full"
+          className="h-1 bg-[#11191d] mt-4 rounded-full"
         />
       </motion.div>
     </div>

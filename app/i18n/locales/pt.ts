@@ -25,7 +25,7 @@ export const pt = {
   competencies: {
     title: 'Competências',
     frontend: {
-      title: 'Desenvolvimento Frontend',
+      title: 'Desenvolvimento Full-stack',
       description: 'Criação de interfaces modernas e responsivas com foco na experiência do usuário.',
       skills: {
         react: 'React.js e Next.js',
@@ -71,7 +71,7 @@ export const pt = {
   },
   skills: {
     title: 'Habilidades Técnicas',
-    frontend: 'Frontend',
+    frontend: 'Full-stack',
     backend: 'Backend',
     database: 'Banco de Dados',
     tools: 'Ferramentas'
@@ -190,7 +190,7 @@ export const pt = {
   techstack: {
     title: 'Tecnologias que Trabalho',
     subtitle: 'Stack completo de tecnologias e ferramentas que domino para desenvolvimento full-stack',
-    frontend: 'Frontend',
+    frontend: 'Full-stack',
     backend: 'Backend',
     database: 'Banco de Dados',
     mobile: 'Mobile',

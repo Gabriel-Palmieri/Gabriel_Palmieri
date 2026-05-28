@@ -38,7 +38,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 border-t border-[#8A6FE8]/20">
+    <footer className="relative border-t border-white/10 bg-[#171717] text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-center gap-6">
           {/* Logo e Copyright */}
@@ -48,7 +48,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-xl font-bold bg-gradient-to-r from-[#8A6FE8] to-[#4A3AFF] text-transparent bg-clip-text mb-2">
+            <h3 className="mb-2 text-xl font-semibold text-white">
               Gabriel Palmieri
             </h3>
           </motion.div>
@@ -66,7 +66,7 @@ const Footer = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#8A6FE8] transition-all duration-300 p-2 hover:bg-[#8A6FE8]/10 rounded-full"
+                className="rounded-full p-2 text-[#c9c4bb] transition-all duration-300 hover:bg-white/10 hover:text-white"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -80,7 +80,7 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-sm text-gray-400 text-center"
+            className="text-center text-sm text-[#c9c4bb]"
           >
             © {currentYear} {t('footer.copyright')}
           </motion.p>

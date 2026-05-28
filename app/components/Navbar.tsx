@@ -114,8 +114,8 @@ export function Navbar() {
       transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-[#0B0B0F]/95 backdrop-blur-xl shadow-lg shadow-[#8A6FE8]/5' 
-          : 'bg-[#0B0B0F]/80 backdrop-blur-md'
+          ? 'bg-[#030405]/94 backdrop-blur-xl shadow-sm shadow-black/40' 
+          : 'bg-[#030405]/78 backdrop-blur-md'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,7 +125,7 @@ export function Navbar() {
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
-              className="text-[#8A6FE8]"
+              className="text-[#f4f1ea]"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -146,11 +146,11 @@ export function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                     activeSection === item.id
-                      ? 'bg-[#8A6FE8]/20 text-[#8A6FE8]'
-                      : 'text-gray-400 hover:text-[#8A6FE8] hover:bg-[#8A6FE8]/10'
+                      ? 'bg-white/10 text-[#f4f1ea]'
+                      : 'text-[#aaa59b] hover:bg-white/[0.06] hover:text-[#d9eef2]'
                   }`}
                 >
-                  <span className={activeSection === item.id ? 'text-[#8A6FE8]' : ''}>
+                  <span>
                     {item.icon}
                   </span>
                   <span className="text-sm font-medium">{item.label}</span>
@@ -167,7 +167,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-400 hover:text-[#8A6FE8] transition-colors"
+            className="text-[#aaa59b] transition-colors hover:text-[#f4f1ea] md:hidden"
             aria-label="Toggle menu"
           >
             <svg
@@ -194,7 +194,7 @@ export function Navbar() {
           animate={{ height: isMenuOpen ? 'auto' : 0 }}
           className="md:hidden overflow-hidden"
         >
-          <div className="py-4 space-y-2 border-t border-[#8A6FE8]/10">
+          <div className="space-y-2 border-t border-white/10 py-4">
             {navItems.map((item) => (
               <Link
                 key={item.id}
@@ -202,8 +202,8 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                   activeSection === item.id
-                    ? 'bg-[#8A6FE8]/20 text-[#8A6FE8]'
-                    : 'text-gray-400 hover:text-[#8A6FE8] hover:bg-[#8A6FE8]/10'
+                    ? 'bg-white/10 text-[#f4f1ea]'
+                    : 'text-[#aaa59b] hover:bg-white/[0.06] hover:text-[#d9eef2]'
                 }`}
               >
                 {item.icon}
@@ -212,7 +212,7 @@ export function Navbar() {
             ))}
 
             {/* Language Toggle Mobile */}
-            <div className="pt-4 border-t border-[#8A6FE8]/10">
+            <div className="border-t border-white/10 pt-4">
               <LanguageToggle />
             </div>
           </div>

@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ReactNode } from 'react';
-import { 
-  SiReact, 
-  SiNextdotjs, 
-  SiJavascript, 
-  SiHtml5, 
-  SiCss3, 
+import {
+  SiReact,
+  SiNextdotjs,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
   SiTailwindcss,
   SiNodedotjs,
   SiPhp,
@@ -28,116 +28,127 @@ interface TechItem {
   icon: ReactNode;
 }
 
+interface TechGroup {
+  key: string;
+  labelKey: string;
+  description: string;
+  techs: TechItem[];
+}
+
 export function TechStack() {
   const { t } = useLanguage();
 
-  const categories = {
-    frontend: [
-      { nameKey: 'tech.react', icon: <SiReact /> },
-      { nameKey: 'tech.nextjs', icon: <SiNextdotjs /> },
-      { nameKey: 'tech.typescript', icon: <SiTypescript /> },
-      { nameKey: 'tech.javascript', icon: <SiJavascript /> },
-      { nameKey: 'tech.html', icon: <SiHtml5 /> },
-      { nameKey: 'tech.css', icon: <SiCss3 /> },
-      { nameKey: 'tech.tailwind', icon: <SiTailwindcss /> },
-    ],
-    backend: [
-      { nameKey: 'tech.nodejs', icon: <SiNodedotjs /> },
-      { nameKey: 'tech.nestjs', icon: <SiNestjs /> },
-      { nameKey: 'tech.php', icon: <SiPhp /> },
-    ],
-    database: [
-      { nameKey: 'tech.postgresql', icon: <SiPostgresql /> },
-      { nameKey: 'tech.mysql', icon: <SiMysql /> },
-      { nameKey: 'tech.prisma', icon: <SiPrisma /> },
-    ],
-    mobile: [
-      { nameKey: 'tech.reactnative', icon: <SiReact /> },
-      { nameKey: 'tech.flutter', icon: <SiFlutter /> },
-    ],
-    tools: [
-      { nameKey: 'tech.git', icon: <SiGit /> },
-      { nameKey: 'tech.docker', icon: <SiDocker /> },
-      { nameKey: 'tech.firebase', icon: <SiFirebase /> },
-    ]
-  };
-
-  const renderTechCard = (tech: TechItem, index: number) => (
-    <motion.div
-      key={tech.nameKey}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="group relative bg-[#1a0f2e]/60 backdrop-blur-sm border border-[#8A6FE8]/20 rounded-xl p-6 flex flex-col items-center justify-center gap-4 hover:border-[#8A6FE8]/60 transition-all duration-300 hover:shadow-[0_0_20px_rgba(138,111,232,0.3)]"
-    >
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#8A6FE8]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-      
-      {/* Icon */}
-      <div className="relative text-[#8A6FE8] text-5xl group-hover:scale-110 transition-transform duration-300">
-        {tech.icon}
-      </div>
-      
-      {/* Name */}
-      <span className="relative text-sm font-medium text-gray-300 group-hover:text-[#8A6FE8] transition-colors duration-300">
-        {t(tech.nameKey)}
-      </span>
-    </motion.div>
-  );
-
-  const renderCategory = (categoryKey: keyof typeof categories, index: number) => {
-    const techs = categories[categoryKey];
-    
-    return (
-      <motion.div
-        key={categoryKey}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1 }}
-        className="space-y-6"
-      >
-        {/* Category Title */}
-        <div className="flex items-center gap-3">
-          <div className="w-1 h-6 bg-[#8A6FE8] rounded-full" />
-          <h3 className="text-xl font-semibold text-white">
-            {t(`techstack.${categoryKey}`)}
-          </h3>
-        </div>
-        
-        {/* Tech Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {techs.map((tech, techIndex) => renderTechCard(tech, techIndex))}
-        </div>
-      </motion.div>
-    );
-  };
+  const groups: TechGroup[] = [
+    {
+      key: 'interface',
+      labelKey: 'techstack.frontend',
+      description: 'Experiencias responsivas, componentes reutilizaveis e interfaces com boa leitura visual.',
+      techs: [
+        { nameKey: 'tech.react', icon: <SiReact /> },
+        { nameKey: 'tech.nextjs', icon: <SiNextdotjs /> },
+        { nameKey: 'tech.typescript', icon: <SiTypescript /> },
+        { nameKey: 'tech.javascript', icon: <SiJavascript /> },
+        { nameKey: 'tech.tailwind', icon: <SiTailwindcss /> },
+        { nameKey: 'tech.html', icon: <SiHtml5 /> },
+        { nameKey: 'tech.css', icon: <SiCss3 /> }
+      ]
+    },
+    {
+      key: 'systems',
+      labelKey: 'techstack.backend',
+      description: 'APIs, regras de negocio e integracoes pensadas para escala.',
+      techs: [
+        { nameKey: 'tech.nodejs', icon: <SiNodedotjs /> },
+        { nameKey: 'tech.nestjs', icon: <SiNestjs /> },
+        { nameKey: 'tech.php', icon: <SiPhp /> },
+        { nameKey: 'tech.prisma', icon: <SiPrisma /> }
+      ]
+    },
+    {
+      key: 'data',
+      labelKey: 'techstack.database',
+      description: 'Modelagem, persistencia e ferramentas que sustentam produtos de verdade.',
+      techs: [
+        { nameKey: 'tech.postgresql', icon: <SiPostgresql /> },
+        { nameKey: 'tech.mysql', icon: <SiMysql /> },
+        { nameKey: 'tech.firebase', icon: <SiFirebase /> },
+        { nameKey: 'tech.docker', icon: <SiDocker /> },
+        { nameKey: 'tech.git', icon: <SiGit /> }
+      ]
+    },
+    {
+      key: 'mobile',
+      labelKey: 'techstack.mobile',
+      description: 'Base para levar produtos a experiencias mobile com consistencia entre telas.',
+      techs: [
+        { nameKey: 'tech.reactnative', icon: <SiReact /> },
+        { nameKey: 'tech.flutter', icon: <SiFlutter /> }
+      ]
+    }
+  ];
 
   return (
-    <section id="tech" className="py-20 px-4">
+    <section id="tech" className="px-4 py-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-14 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#8A6FE8] to-[#B794F6] bg-clip-text text-transparent">
-            {t('techstack.title')}
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <div>
+            <span className="mb-4 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[#8fb4be]">
+              Stack
+            </span>
+            <h2 className="text-4xl font-semibold leading-tight text-[#f4f1ea] md:text-5xl">
+              {t('techstack.title')}
+            </h2>
+          </div>
+          <p className="max-w-2xl self-end text-lg leading-8 text-[#b7b2a8]">
             {t('techstack.subtitle')}
           </p>
         </motion.div>
 
-        {/* Categories */}
-        <div className="space-y-12">
-          {(Object.keys(categories) as Array<keyof typeof categories>).map((category, index) => 
-            renderCategory(category, index)
-          )}
+        <div className="overflow-hidden rounded-xl border border-white/10 bg-[#030405]">
+          {groups.map((group, index) => (
+            <motion.div
+              key={group.key}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="grid gap-6 border-b border-white/10 p-6 last:border-b-0 md:grid-cols-[240px_1fr]"
+            >
+              <div>
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-[#11191d]" />
+                  <h3 className="text-lg font-semibold text-[#f4f1ea]">
+                    {t(group.labelKey)}
+                  </h3>
+                </div>
+                <p className="text-sm leading-6 text-[#8e8981]">
+                  {group.description}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {group.techs.map((tech) => (
+                  <motion.div
+                    key={tech.nameKey}
+                    whileHover={{ y: -3 }}
+                    className="group flex min-h-20 items-center gap-3 rounded-lg border border-white/10 bg-[#070809] px-4 py-3 transition-colors hover:border-[#8fb4be]/35 hover:bg-[#0a0c0d]"
+                  >
+                    <span className="text-2xl text-[#8fb4be] transition-colors group-hover:text-[#d9eef2]">
+                      {tech.icon}
+                    </span>
+                    <span className="text-sm font-medium text-[#d4cec3]">
+                      {t(tech.nameKey)}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

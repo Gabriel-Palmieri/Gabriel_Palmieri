@@ -20,11 +20,10 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Simula carregamento mínimo de 2 segundos
+
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 900);
 
     return () => clearTimeout(timer);
   }, []);
@@ -40,15 +39,15 @@ export default function Home() {
       y: 0,
       transition: {
         duration: 0.5,
-        staggerChildren: 0.2
+        staggerChildren: 0.16
       }
     }
   };
 
   const itemAnimation = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
@@ -57,79 +56,114 @@ export default function Home() {
     }
   };
 
-  const gradientAnimation = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 1 } }
-  };
+  const projects = [
+    {
+      id: 1,
+      titleKey: 'projects.rimac.title',
+      descriptionKey: 'projects.rimac.description',
+      image: ['/assets/mobilia1.png', '/assets/mobilia2.png', '/assets/mobilia3.png'],
+      githubUrl: 'https://github.com/Guimenn/MobiliAI',
+      year: '2025',
+      features: [
+        'projects.rimac.feature1',
+        'projects.rimac.feature2',
+        'projects.rimac.feature3',
+        'projects.rimac.feature4'
+      ],
+      technologies: [
+        { name: 'Next.js', icon: (<svg></svg>) },
+        { name: 'Tailwind CSS', icon: (<svg></svg>) },
+        { name: 'NestJS', icon: (<svg></svg>) },
+        { name: 'PostgreSQL', icon: (<svg></svg>) },
+        { name: 'Prisma ORM', icon: (<svg></svg>) },
+        { name: 'OpenAI API', icon: (<svg></svg>) }
+      ]
+    },
+    {
+      id: 2,
+      titleKey: 'projects.thornfield.title',
+      descriptionKey: 'projects.thornfield.description',
+      image: '/assets/thornfield.png',
+      liveUrl: 'https://thornfield-a.vercel.app',
+      githubUrl: 'https://github.com/Guimenn/Thornfield-a',
+      year: '2025',
+      features: [
+        'projects.thornfield.feature1',
+        'projects.thornfield.feature2',
+        'projects.thornfield.feature3',
+        'projects.thornfield.feature4'
+      ],
+      technologies: [
+        { name: 'Next.js', icon: (<svg></svg>) },
+        { name: 'Tailwind CSS', icon: (<svg></svg>) },
+        { name: 'TypeScript', icon: (<svg></svg>) },
+        { name: 'Firebase', icon: (<svg></svg>) }
+      ]
+    },
+    {
+      id: 3,
+      titleKey: 'projects.saldoverde.title',
+      descriptionKey: 'projects.saldoverde.description',
+      image: '/assets/saldo.png',
+      liveUrl: 'https://projeto-financias.vercel.app/',
+      githubUrl: 'https://github.com/Gabriel-Palmieri/Saldo_Verde',
+      year: '2024',
+      features: [
+        'projects.saldoverde.feature1',
+        'projects.saldoverde.feature2',
+        'projects.saldoverde.feature3',
+        'projects.saldoverde.feature4'
+      ],
+      technologies: [
+        { name: 'Next.js', icon: (<svg></svg>) },
+        { name: 'Node.js', icon: (<svg></svg>) },
+        { name: 'MySQL', icon: (<svg></svg>) }
+      ]
+    },
+    {
+      id: 4,
+      titleKey: 'projects.neobank.title',
+      descriptionKey: 'projects.neobank.description',
+      image: '/assets/neobank.jpeg',
+      githubUrl: 'https://github.com/Gabriel-Palmieri/NeoBank',
+      year: '2024',
+      features: [
+        'projects.neobank.feature1',
+        'projects.neobank.feature2',
+        'projects.neobank.feature3',
+        'projects.neobank.feature4'
+      ],
+      technologies: [
+        { name: 'HTML5', icon: (<svg></svg>) },
+        { name: 'CSS3', icon: (<svg></svg>) },
+        { name: 'PHP', icon: (<svg></svg>) }
+      ]
+    }
+  ];
 
   return (
-    <main className="relative bg-[#0B0B0F] min-h-screen text-white overflow-x-hidden">
-      {/* Background Elements */}
-      <div className="fixed inset-0 z-0">
-        {/* Gradiente principal animado */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0F] via-[#1a123b]/20 to-[#0B0B0F] animate-gradient" />
-        
-        {/* Círculos de luz */}
-        <div className="absolute top-20 left-[20%] w-[500px] h-[500px] bg-[#8A6FE8]/10 rounded-full blur-[100px] animate-pulse-slow" />
-        <div className="absolute bottom-40 right-[10%] w-[400px] h-[400px] bg-[#4A3AFF]/10 rounded-full blur-[100px] animate-pulse-slow delay-1000" />
-        
-        {/* Novos círculos animados */}
-        <div className="absolute top-[60%] left-[5%] w-[300px] h-[300px] bg-[#8A6FE8]/5 rounded-full blur-[80px] animate-float" />
-        <div className="absolute top-[10%] right-[15%] w-[250px] h-[250px] bg-[#4A3AFF]/5 rounded-full blur-[60px] animate-float-reverse" />
-        
-        {/* Grid de pontos */}
-        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(90deg,#8A6FE820_1px,transparent_1px),linear-gradient(0deg,#8A6FE820_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#030405] text-[#f4f1ea]">
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_72%_18%,rgba(143,180,190,0.045),transparent_32%),linear-gradient(180deg,#040506_0%,#030405_62%)]" />
 
-        {/* Linhas flutuantes */}
-        <div className="absolute left-0 top-1/4 w-full h-px bg-gradient-to-r from-transparent via-[#8A6FE8]/20 to-transparent animate-slide-right" />
-        <div className="absolute right-0 top-2/3 w-full h-px bg-gradient-to-r from-transparent via-[#4A3AFF]/20 to-transparent animate-slide-left" />
-        
-        {/* Novas linhas diagonais */}
-        <div className="absolute -left-1/4 top-0 w-[150%] h-px bg-gradient-to-r from-transparent via-[#8A6FE8]/10 to-transparent rotate-[30deg] animate-slide-right-slow" />
-        <div className="absolute -right-1/4 bottom-1/4 w-[150%] h-px bg-gradient-to-r from-transparent via-[#4A3AFF]/10 to-transparent -rotate-[30deg] animate-slide-left-slow" />
-        
-        {/* Partículas brilhantes */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#8A6FE8]/30 rounded-full animate-twinkle" />
-        <div className="absolute top-3/4 right-1/3 w-2 h-2 bg-[#4A3AFF]/30 rounded-full animate-twinkle delay-1000" />
-        <div className="absolute top-1/2 left-2/3 w-2 h-2 bg-[#8A6FE8]/30 rounded-full animate-twinkle delay-2000" />
-      </div>
-      
       <Navbar />
 
-      {/* Hero Section com fundo próprio */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center p-8 pt-24">
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            variants={gradientAnimation}
-            initial="hidden"
-            animate="show"
-            className="absolute inset-0" 
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, #8A6FE815 0%, transparent 60%)',
-              filter: 'blur(40px)'
-            }} 
-          />
-          <motion.div 
-            variants={gradientAnimation}
-            initial="hidden"
-            animate="show"
-            className="absolute inset-0" 
-            style={{
-              background: 'radial-gradient(circle at 70% 30%, #4A3AFF10 0%, transparent 50%)',
-              filter: 'blur(40px)'
-            }}
-          />
-        </div>
-
-        <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center relative z-10 px-4 sm:px-6 lg:px-8">
+      <section id="home" className="relative flex min-h-screen items-center px-6 pb-16 pt-28 sm:px-8">
+        <div className="container relative z-10 mx-auto grid items-center gap-12 px-0 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <motion.div
             variants={containerAnimation}
             initial="hidden"
             animate="show"
             className="space-y-8"
           >
+            <motion.span
+              variants={itemAnimation}
+              className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-[#b8c7c9]"
+            >
+              Gabriel Palmieri | Full Stack Developer
+            </motion.span>
+
             <motion.div variants={itemAnimation}>
-              <h1 className="text-4xl md:text-7xl font-bold mb-4">
+              <h1 className="mb-5 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-normal text-[#f4f1ea] md:text-7xl">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -141,40 +175,40 @@ export default function Home() {
               </h1>
             </motion.div>
 
-            <motion.p 
+            <motion.p
               variants={itemAnimation}
-              className="text-gray-400 text-xl max-w-lg"
+              className="max-w-xl text-lg leading-8 text-[#b7b2a8] md:text-xl"
             >
               {t('hero.description')}
             </motion.p>
 
-            <motion.div 
+            <motion.div
               variants={itemAnimation}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3"
             >
               {["ReactJS", "Javascript", "NodeJs", "Tailwind"].map((tech) => (
                 <motion.span
                   key={tech}
-                  whileHover={{ scale: 1.05, color: "#8A6FE8" }}
-                  className="px-4 py-2 bg-[#1a123b] rounded-lg text-gray-300 transition-all cursor-default"
+                  whileHover={{ y: -2 }}
+                  className="cursor-default rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm font-medium text-[#c9c4bb] transition-all hover:border-[#8fb4be]/35 hover:text-[#d9eef2]"
                 >
                   {tech}
                 </motion.span>
               ))}
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={itemAnimation}
-              className="flex flex-wrap gap-6"
+              className="flex flex-wrap gap-4"
             >
               <motion.a
                 href="#projects"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-[#8A6FE8] text-white rounded-lg transition-all duration-200 ease-out hover:bg-[#7559D1] hover:shadow-lg hover:shadow-[#8A6FE8]/20"
+                className="relative inline-flex items-center justify-center rounded-md bg-[#e8e2d6] px-6 py-3 text-base font-medium text-[#101211] transition-all duration-200 ease-out hover:bg-white"
               >
                 {t('projects.title')}
-                <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </motion.a>
@@ -183,10 +217,10 @@ export default function Home() {
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-transparent border-2 border-[#8A6FE8] text-[#8A6FE8] rounded-lg transition-all duration-200 ease-out hover:bg-[#8A6FE8]/10 hover:shadow-lg hover:shadow-[#8A6FE8]/20"
+                className="relative inline-flex items-center justify-center rounded-md border border-white/15 bg-white/[0.03] px-6 py-3 text-base font-medium text-[#f4f1ea] transition-all duration-200 ease-out hover:border-[#8fb4be]/45 hover:text-[#d9eef2]"
               >
                 {t('contact.title')}
-                <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </motion.a>
@@ -197,214 +231,60 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative w-full h-[600px] md:h-[800px]"
+            className="relative h-[460px] w-full md:h-[640px]"
           >
-            <motion.div
-              animate={{ y: [-10, 10] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut"
-              }}
-              className="w-full h-full"
-            >
+            <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-[#050607]/85 shadow-[0_24px_90px_rgba(0,0,0,0.45)]" />
+            <div className="relative h-full w-full overflow-hidden rounded-[2rem]">
               <HeroIllustration />
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Outras seções com background mais suave */}
       <div className="relative z-10">
-        {/* About Section */}
-        <section id="about" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
+        <section id="about" className="border-y border-white/10 bg-[#141715]/80 px-6 py-24 sm:px-8">
           <div className="container mx-auto">
             <AboutMe />
           </div>
         </section>
 
-        {/* Technologies & Skills Section - Combined */}
-        <section id="tech" className="relative py-20 px-8">
-          <div className="absolute inset-0 bg-[#1a123b]/10 backdrop-blur-sm" />
+        <section id="tech" className="relative px-6 py-24 sm:px-8">
           <div className="container mx-auto relative z-10">
             <TechStack />
           </div>
         </section>
 
-        {/* Soft Skills Section */}
-        <section id="softskills" className="py-20 px-8 bg-[#0B0B0F]/50 backdrop-blur-sm">
+        <section id="softskills" className="border-y border-white/10 bg-[#030405] px-6 py-24 sm:px-8">
           <div className="container mx-auto">
             <SoftSkills />
           </div>
         </section>
 
-        {/* Projects Section com fundo especial */}
-        <section id="projects" className="relative py-20 px-8">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a123b]/20 to-transparent" />
+        <section id="projects" className="relative px-6 py-24 sm:px-8">
           <div className="container mx-auto relative z-10">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
-              className="text-4xl font-bold text-center mb-16"
+              className="mb-16 text-center text-4xl font-semibold text-[#f4f1ea]"
             >
               {t('projects.title')}
             </motion.h2>
-            <ModernProjects projects={[
-              // 2025 - Mais novos
-              {
-                id: 1,
-                titleKey: 'projects.rimac.title',
-                descriptionKey: 'projects.rimac.description',
-                image: ['/assets/mobilia1.png', '/assets/mobilia2.png', '/assets/mobilia3.png'],
-                githubUrl: 'https://github.com/Guimenn/MobiliAI',
-                year: '2025',
-                features: [
-                  'projects.rimac.feature1',
-                  'projects.rimac.feature2',
-                  'projects.rimac.feature3',
-                  'projects.rimac.feature4'
-                ],
-                technologies: [
-                  {
-                    name: 'Next.js',
-                    icon: (<svg></svg>)
-                  },
-
-                  {
-                    name: 'Tailwind CSS',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'NestJS',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'PostgreSQL',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'Prisma ORM',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'OpenAI API',
-                    icon: (<svg></svg>)
-                  }
-                ]
-              },
-              {
-                id: 2,
-                titleKey: 'projects.thornfield.title',
-                descriptionKey: 'projects.thornfield.description',
-                image: '/assets/thornfield.png',
-                liveUrl: 'https://thornfield-a.vercel.app',
-                githubUrl: 'https://github.com/Guimenn/Thornfield-a',
-                year: '2025',
-                features: [
-                  'projects.thornfield.feature1',
-                  'projects.thornfield.feature2',
-                  'projects.thornfield.feature3',
-                  'projects.thornfield.feature4'
-                ],
-                technologies: [
-                  {
-                    name: 'Next.js',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'Tailwind CSS',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'TypeScript',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'Firebase',
-                    icon: (<svg></svg>)
-                  }
-                ]
-              },
-              {
-                id: 3,
-                titleKey: 'projects.saldoverde.title',
-                descriptionKey: 'projects.saldoverde.description',
-                image: '/assets/saldo.png',
-                liveUrl: 'https://projeto-financias.vercel.app/',
-                githubUrl: 'https://github.com/Gabriel-Palmieri/Saldo_Verde',
-                year: '2024',
-                features: [
-                  'projects.saldoverde.feature1',
-                  'projects.saldoverde.feature2',
-                  'projects.saldoverde.feature3',
-                  'projects.saldoverde.feature4'
-                ],
-                technologies: [
-                  {
-                    name: 'Next.js',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'Node.js',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'MySQL',
-                    icon: (<svg></svg>)
-                  }
-                ]
-              },
-              {
-                id: 4,
-                titleKey: 'projects.neobank.title',
-                descriptionKey: 'projects.neobank.description',
-                image: '/assets/neobank.jpeg',
-                githubUrl: 'https://github.com/Gabriel-Palmieri/NeoBank',
-                year: '2024',
-                features: [
-                  'projects.neobank.feature1',
-                  'projects.neobank.feature2',
-                  'projects.neobank.feature3',
-                  'projects.neobank.feature4'
-                ],
-                technologies: [
-                  {
-                    name: 'HTML5',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'CSS3',
-                    icon: (<svg></svg>)
-                  },
-                  {
-                    name: 'PHP',
-                    icon: (<svg></svg>)
-                  }
-                ]
-              }
-            ]} />
+            <ModernProjects projects={projects} />
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="relative py-20 px-8">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1a123b]/30 to-[#0B0B0F]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#8A6FE8]/10 via-transparent to-transparent" />
-            </div>
-          
+        <section id="contact" className="relative border-t border-white/10 bg-[#030405] px-6 py-24 text-white sm:px-8">
           <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-12"
+              className="mb-12 text-center"
             >
-              <h2 className="text-4xl font-bold mb-4">{t('contact.title')}</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <h2 className="mb-4 text-4xl font-semibold">{t('contact.title')}</h2>
+              <p className="mx-auto max-w-2xl text-[#c9c4bb]">
                 {t('contact.description')}
               </p>
             </motion.div>

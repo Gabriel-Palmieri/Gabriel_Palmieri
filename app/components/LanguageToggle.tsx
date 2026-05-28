@@ -12,7 +12,7 @@ export function LanguageToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#8A6FE8]/10 hover:bg-[#8A6FE8]/20 text-[#8A6FE8] transition-all duration-300 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40"
+      className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2 text-[#c9c4bb] transition-all duration-300 hover:border-[#8fb4be]/35 hover:text-[#d9eef2]"
       aria-label={`Change language to ${language === 'pt' ? 'English' : 'Portuguese'}`}
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
