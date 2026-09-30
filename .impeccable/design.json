@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T00:00:00Z",
+  "title": "Design System: Gabriel Palmieri",
+  "extensions": {
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hero arrival, project changes and directional hover movement."
+      },
+      {
+        "name": "arrive",
+        "value": "800ms / 1000ms; translateY(14px) to 0; opacity 0.6 to 1",
+        "purpose": "Initial hero heading and introduction."
+      },
+      {
+        "name": "changeProject",
+        "value": "400ms; translateX(8px) to 0; opacity 0.6 to 1",
+        "purpose": "A newly selected project panel."
+      },
+      {
+        "name": "changeImage",
+        "value": "320ms; opacity 0.55 to 1",
+        "purpose": "Manual gallery image change."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important; scroll-behavior: auto",
+        "purpose": "Applied when prefers-reduced-motion is reduce."
+      }
+    ],
+    "breakpoints": [
+      { "name": "narrow-phone-max", "value": "380px" },
+      { "name": "mobile-max", "value": "760px" },
+      { "name": "compact-desktop-max", "value": "1100px" },
+      { "name": "wide-desktop-min", "value": "1600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pale action with restrained accent hover and visible keyboard focus.",
+      "html": "<button class=\"ds-button\" type=\"button\">Ver código</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:46px;padding:12px 18px;border:0;border-radius:5px;background:var(--foreground);color:var(--background);font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:background 160ms,color 160ms}.ds-button:hover{background:var(--accent);color:var(--background)}.ds-button:focus-visible{outline:2px solid var(--accent);outline-offset:5px}.ds-button:disabled{cursor:wait;opacity:.55}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"
+    }
+  ],
+  "narrative": {
+    "overview": "A minimal, technical, sober dark portfolio. Large left-aligned typography, quiet controls and real screenshots establish the visual identity.",
+    "keyCharacteristics": [
+      "Graphite surfaces",
+      "Self-hosted Space Grotesk",
+      "Muted periwinkle accent",
+      "Flat section structure",
+      "Manual project gallery"
+    ],
+    "rules": [
+      {
+        "name": "Flat surfaces",
+        "body": "Use tonal surfaces and thin dividers; the implementation has no shadows.",
+        "section": "elevation"
+      },
+      {
+        "name": "Accessible motion",
+        "body": "Disable animation, transitions and smooth scrolling for reduced-motion preference.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do reuse implemented palette and typography.",
+      "Do retain keyboard navigation and focus visibility."
+    ],
+    "donts": [
+      "Don't add decorative terminals, floating technology clouds or artificial loading screens.",
+      "Don't autoplay the project gallery."
+    ]
+  }
+}

@@ -1,18 +1,23 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { InitialLoading } from './components/InitialLoading';
 
 export const metadata: Metadata = {
   title: 'Gabriel Palmieri - Portfolio',
-  description: 'Portfolio pessoal de Gabriel Palmieri, desenvolvedor web full-stack.',
+  description:
+    'Portfolio pessoal de Gabriel Palmieri, desenvolvedor web full-stack.',
   icons: {
-    icon: '/logo-me.png',
-    apple: '/logo-me.png',
+    icon: [
+      { url: '/palmieri-icon.svg', type: 'image/svg+xml' },
+      { url: '/palmieri-icon-32.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: '/palmieri-apple-icon.png',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#030405',
+  themeColor: '#17191c',
 };
 
 export default function RootLayout({
@@ -21,13 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" style={{ backgroundColor: '#030405' }}>
-      <head>
-        <meta name="theme-color" content="#030405" />
-      </head>
-      <body style={{ backgroundColor: '#030405' }}>
+    <html lang="pt-BR">
+      <body>
         <LanguageProvider>
-          {children}
+          <InitialLoading>{children}</InitialLoading>
         </LanguageProvider>
       </body>
     </html>

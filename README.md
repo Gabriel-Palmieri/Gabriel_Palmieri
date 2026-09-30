@@ -1,72 +1,54 @@
-# Portfólio - Gabriel Palmieri
+﻿# Portfólio — Gabriel Palmieri
 
-<div align="center">
-  <img src="./assets/banner.png" alt="Banner do Portfólio" width="100%">
-</div>
+Portfólio pessoal em Next.js 15, React 19 e TypeScript. Tema escuro, conteúdo em português e inglês, galeria de projetos e formulário com EmailJS.
 
-## 👋 Sobre Mim
+## Desenvolvimento
 
-Olá! Sou um desenvolvedor apaixonado por tecnologia e inovação. Minha jornada na programação começou desde os 16 anos atraves de cursos tecnicos e pratica e desde então venho construindo soluções que fazem a diferença.
+```sh
+npm ci
+npm run dev
+```
 
-## 🚀 Habilidades
+Abra http://localhost:3000.
 
-### Linguagens de Programação
-- JavaScript/TypeScript
+## Verificação
 
+```sh
+npm run lint
+npm run typecheck
+npm run build
+npm run test:e2e
+```
 
-### Frontend
-- React.js
-- HTML5
-- CSS3/Sass
-- Tailwind
-- Next.js
-- Bootstrap
+Os testes usam Microsoft Edge no Windows; em outros sistemas, instale Chromium com `npx playwright install chromium`. A suíte verifica desktop e celular, navegação por teclado, idioma persistido, galeria, validação do formulário e falhas de envio sem enviar mensagens reais. Capturas locais ficam em `.impeccable/review/` e não são versionadas.
 
+## Estrutura
 
-### Backend
-- Node.js
-- Express
-- PHP
+- `app/page.tsx`: composição da página.
+- `tailwind.config.js`: tema e detecção das classes do Tailwind CSS 3.4.
+- `app/globals.css`: diretivas Tailwind, tokens, fontes, animações e acessibilidade.
+- `app/components/`: navegação, projetos, tecnologias e contato, estilizados com classes utilitárias Tailwind.
+- `app/data/projects.ts`: imagens, tecnologias e links dos projetos.
+- `app/i18n/locales/`: conteúdo em português e inglês.
+- `DESIGN.md`: decisões visuais e regras para futuras alterações.
 
+Space Grotesk é servida localmente por `@fontsource/space-grotesk`. As animações usam CSS, não bloqueiam o conteúdo e respeitam a preferência por movimento reduzido.
 
-### Banco de Dados
-- PostgreSQL
-- Mysql
+## Contato
 
-### Ferramentas & DevOps
-- Git
+Configure no ambiente de deploy ou em `.env.local`:
 
-## 💼 Projetos em Destaque
+```dotenv
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=seu_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=seu_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=sua_public_key
+```
 
-### [Thornfield]
-[![Project 1](./assets/thornfield.png)](https://thornfield-a.vercel.app)
-- Site elegante para uma marca premium de whisky, apresentando uma experiência imersiva com design sofisticado. Desenvolvido com foco na história da destilaria, processo de fabricação e catálogo de produtos.
-- Tecnologias utilizadas:
-Next.js
-Tailwind CSS
-Flowbite React
-TypeScript
-Firebase
-Node.js
-- [Link para o projeto](https://thornfield-a.vercel.app)
+Sem essas variáveis, o formulário preserva a mensagem digitada e oferece o LinkedIn como alternativa. O template mantém os campos `name`, `from_name`, `email`, `from_email`, `message`, `time`, `year` e `subject`.
 
-### [NeoBank]
-[![Project 2](./assets/neobank.jpeg)](https://github.com/palmitex/NeoBank)
-- Este projeto, desenvolvido em trio, teve como objetivo criar um simulador de caixa eletrônico e foi decidico criar o site Neobank, um site de banco moderno. O site foi projetado para simular operações bancárias, proporcionando uma experiência funcional e intuitiva para os usuários. Utilizamos HTML e CSS para estruturar e estilizar o site, PHP para gerenciar as funcionalidades do back-end e JavaScript para adicionar interatividade e aprimorar a usabilidade.
-- Tecnologias utilizadas:
-HTML
-CSS
-JavaScript
-PHP
-- [Link para o projeto](https://github.com/palmitex/NeoBank)
+- [GitHub](https://github.com/Gabriel-Palmieri)
+- [LinkedIn](https://www.linkedin.com/in/gabriel-palmieri12/)
 
+## Imagens
 
-## 🎓 Educação
-Desenvolvimento de Sistemas, SENAI Armando de Arruda Pereira - Cursando, conclusão em Dezembro/2025
-
-
-## 📫 Contato
-
-- 📧 Email: [gabriel1208.palmieri@gmail.com]
-- 💼 LinkedIn: [www.linkedin.com/in/gabriel-palmieri12]
-
+As capturas dos projetos em `public/assets/`, o retrato `public/me.jpeg` e a marca `public/logo-me.png` foram preservados do repositório original. Nenhuma imagem sintética foi adicionada.

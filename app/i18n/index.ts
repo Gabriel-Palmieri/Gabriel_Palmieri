@@ -15,13 +15,18 @@ export function getTranslations(lang: Language) {
 
 export function getBrowserLanguage(): Language {
   if (typeof window === 'undefined') return 'pt';
-  
+
   const browserLang = navigator.language.split('-')[0];
   return browserLang === 'pt' ? 'pt' : 'en';
 }
 
 export function getSavedLanguage(): Language {
   if (typeof window === 'undefined') return 'pt';
-  
-  return (localStorage.getItem('language') as Language) || getBrowserLanguage();
-} 
+
+  try {
+    const saved = localStorage.getItem('language');
+    return saved === 'pt' || saved === 'en' ? saved : getBrowserLanguage();
+  } catch {
+    return getBrowserLanguage();
+  }
+}
