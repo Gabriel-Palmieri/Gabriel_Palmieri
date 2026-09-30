@@ -23,6 +23,7 @@ export const en = {
     title: 'Featured Projects',
     viewProject: 'View Project',
     viewCode: 'View Code',
+    viewLanding: 'View Landing Page',
     technologies: 'Technologies Used',
     thornfield: {
       title: 'Thornfield',
@@ -41,6 +42,15 @@ export const en = {
       feature2: 'Furniture visualization in real environments',
       feature3: 'Real-time POS integration',
       feature4: 'Complete administrative system for management',
+    },
+    cameraJovi: {
+      title: 'Camera Jovi',
+      description:
+        'Camera Jovi turns photos of whiteboards, notebooks, exercises and code into study material. Images are captured in the browser; a FastAPI backend uses Google Gemini to generate summaries, flashcards, math solutions and code analysis. A landing page introduces the product and team.',
+      feature1: 'Image capture through the browser camera',
+      feature2: 'Summaries, flashcards and math exercise solutions',
+      feature3: 'Jovi Code explains photographed code and suggests fixes',
+      feature4: 'Local notebook by subject, class schedule and SmartPix OCR',
     },
     saldoverde: {
       title: 'Saldo Verde',

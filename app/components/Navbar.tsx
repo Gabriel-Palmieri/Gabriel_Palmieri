@@ -31,7 +31,7 @@ export function Navbar() {
               : 'Gabriel Palmieri — home'
           }
         >
-          palmieri
+          Palmieri
         </a>
         <nav
           id="navigation"

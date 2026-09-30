@@ -23,6 +23,7 @@ export const pt = {
     title: 'Projetos em Destaque',
     viewProject: 'Ver Projeto',
     viewCode: 'Ver Código',
+    viewLanding: 'Ver Landing Page',
     technologies: 'Tecnologias Utilizadas',
     thornfield: {
       title: 'Thornfield',
@@ -41,6 +42,16 @@ export const pt = {
       feature2: 'Visualização de móveis em ambientes reais',
       feature3: 'Integração com PDVs em tempo real',
       feature4: 'Sistema administrativo completo para gestão',
+    },
+    cameraJovi: {
+      title: 'Camera Jovi',
+      description:
+        'A Camera Jovi transforma fotos de lousas, cadernos, exercícios e trechos de código em material de estudo. A captura acontece no navegador; uma API em FastAPI usa o Google Gemini para gerar resumos, flashcards, resoluções matemáticas e análises de código. Uma landing page apresenta a proposta e a equipe.',
+      feature1: 'Captura de imagens pela câmera do navegador',
+      feature2: 'Resumos, flashcards e resolução de exercícios de matemática',
+      feature3: 'Jovi Code explica o código fotografado e sugere correções',
+      feature4:
+        'Caderno local por disciplina, grade de aulas e SmartPix com OCR',
     },
     saldoverde: {
       title: 'Saldo Verde',

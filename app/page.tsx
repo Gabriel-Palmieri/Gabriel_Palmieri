@@ -6,7 +6,9 @@ import { ProjectShowcase } from './components/ProjectShowcase';
 import { Skills } from './components/Skills';
 import ContactForm from './components/ContactForm';
 import { useLanguage } from './contexts/LanguageContext';
-import { socialLinks } from './data/projects';
+import { projects, socialLinks } from './data/projects';
+
+const projectYears = projects.map(({ year }) => Number(year));
 
 export default function Home() {
   const { t, language } = useLanguage();
@@ -58,13 +60,6 @@ export default function Home() {
                   <path d="M12 4v16m-6-6 6 6 6-6" />
                 </svg>
               </a>
-              <a
-                href="https://github.com/Gabriel-Palmieri"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
             </div>
           </div>
         </section>
@@ -75,7 +70,9 @@ export default function Home() {
         >
           <div className="mb-[26px] flex items-baseline justify-between gap-5 [&_h2]:text-[25px] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&>span]:text-[12px] [&>span]:tabular-nums max-[760px]:mb-5 max-[760px]:[&_h2]:text-[21px] max-[760px]:[&>span]:text-[10px] max-[380px]:gap-2 max-[380px]:[&_h2]:text-[19px]">
             <h2 id="projects-title">{t('projects.title')}</h2>
-            <span className="text-muted">2024 — 2025</span>
+            <span className="text-muted">
+              {Math.min(...projectYears)} — {Math.max(...projectYears)}
+            </span>
           </div>
           <ProjectShowcase />
         </section>

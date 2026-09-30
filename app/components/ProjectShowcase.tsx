@@ -5,6 +5,17 @@ import Image from 'next/image';
 import { projects } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 
+const imageDimensions: Record<string, { width: number; height: number }> = {
+  '/assets/mobilia1.png': { width: 1340, height: 761 },
+  '/assets/mobilia2.png': { width: 1336, height: 760 },
+  '/assets/mobilia3.png': { width: 1340, height: 760 },
+  '/assets/thornfield.png': { width: 1312, height: 604 },
+  '/assets/Celular.png': { width: 1909, height: 911 },
+  '/assets/image.png': { width: 1907, height: 903 },
+  '/assets/saldo.png': { width: 1337, height: 643 },
+  '/assets/neobank.jpeg': { width: 1893, height: 841 },
+};
+
 export function ProjectShowcase() {
   const { t, language } = useLanguage();
   const [selected, setSelected] = useState(0);
@@ -50,7 +61,7 @@ export function ProjectShowcase() {
             onKeyDown={(event) => navigate(event, index)}
           >
             {item.title}
-            <span>{item.year}</span>
+            {item.year && <span>{item.year}</span>}
           </button>
         ))}
       </div>
@@ -63,21 +74,38 @@ export function ProjectShowcase() {
         className="grid min-h-[455px] grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] items-start gap-10 animate-change-project max-[1100px]:gap-7 max-[1100px]:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] max-[760px]:grid-cols-1 max-[760px]:gap-5 max-[760px]:min-h-0"
       >
         <div className="min-w-0">
-          <div className="relative aspect-[1.53] overflow-hidden rounded-lg bg-[#e4e7eb] max-[760px]:aspect-[1.5]">
+          <div className="overflow-hidden rounded-lg">
             <Image
               key={project.images[slide]}
               src={project.images[slide]}
-              alt={`${project.title} — ${language === 'pt' ? 'tela' : 'screen'} ${slide + 1}`}
-              fill
+              alt={
+                project.id === 'camera-jovi'
+                  ? slide === 0
+                    ? language === 'pt'
+                      ? 'Camera Jovi — tela da câmera'
+                      : 'Camera Jovi — camera screen'
+                    : 'Camera Jovi — landing page'
+                  : `${project.title} — ${language === 'pt' ? 'tela' : 'screen'} ${slide + 1}`
+              }
+              width={imageDimensions[project.images[slide]].width}
+              height={imageDimensions[project.images[slide]].height}
               sizes="(max-width: 760px) 100vw, (max-width: 1100px) 58vw, 740px"
-              className="object-contain animate-change-image"
+              className="h-auto w-full animate-change-image"
               priority={selected === 0 && slide === 0}
             />
           </div>
           <div className="flex min-h-[54px] items-center justify-between gap-3 text-[11px] text-muted">
             <span>
               {project.title} /{' '}
-              {language === 'pt' ? 'Interface web' : 'Web interface'}
+              {project.id === 'camera-jovi'
+                ? slide === 0
+                  ? language === 'pt'
+                    ? 'Aplicação'
+                    : 'Application'
+                  : 'Landing page'
+                : language === 'pt'
+                  ? 'Interface web'
+                  : 'Web interface'}
             </span>
             {project.images.length > 1 ? (
               <div
@@ -99,21 +127,23 @@ export function ProjectShowcase() {
                 ))}
               </div>
             ) : (
-              <span>{project.year}</span>
+              project.year && <span>{project.year}</span>
             )}
           </div>
         </div>
         <div className="pt-[3px] [&_h3]:mb-[18px] [&_h3]:text-[28px] [&_h3]:font-medium [&_h3]:tracking-[-0.025em] [&_h3]:leading-[1.2] [&>p]:text-[13px] [&>p]:leading-[1.85] [&>p]:text-muted max-[760px]:[&_h3]:text-[26px] max-[760px]:[&>p]:text-[14px]">
           <h3>{t(`projects.${project.key}.title`)}</h3>
           <p>{t(`projects.${project.key}.description`)}</p>
-          <ul
-            className="my-[22px] flex list-none flex-wrap gap-x-4 gap-y-1.5 p-0 [&_li]:text-[11px] [&_li]:text-foreground max-[760px]:[&_li]:text-[12px]"
-            aria-label={t('projects.technologies')}
-          >
-            {project.stack.map((tech) => (
-              <li key={tech}>{tech}</li>
-            ))}
-          </ul>
+          {project.stack.length > 0 && (
+            <ul
+              className="my-[22px] flex list-none flex-wrap gap-x-4 gap-y-1.5 p-0 [&_li]:text-[11px] [&_li]:text-foreground max-[760px]:[&_li]:text-[12px]"
+              aria-label={t('projects.technologies')}
+            >
+              {project.stack.map((tech) => (
+                <li key={tech}>{tech}</li>
+              ))}
+            </ul>
+          )}
           <details className="mb-6 border-y border-line [&_ul]:list-disc [&_ul]:pl-[18px] [&_ul]:mb-[18px] [&_ul]:text-[12px] [&_ul]:text-muted [&_li+li]:mt-2 [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[12px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
             <summary>
               {language === 'pt' ? 'Funcionalidades' : 'Features'}
@@ -155,6 +185,16 @@ export function ProjectShowcase() {
                 rel="noopener noreferrer"
               >
                 {t('projects.viewProject')}
+              </a>
+            )}
+            {'landingLive' in project && (
+              <a
+                className="group inline-flex items-center gap-[18px] text-[13px] font-semibold underline decoration-line transition-colors duration-[160ms] hover:decoration-accent"
+                href={project.landingLive}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('projects.viewLanding')}
               </a>
             )}
           </div>

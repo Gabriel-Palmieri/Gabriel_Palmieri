@@ -7,6 +7,8 @@ test('projects support keyboard selection, gallery and real destinations', async
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
+  await expect(page.getByRole('tab').first()).toContainText('Camera Jovi');
+  await expect(page.locator('#projects')).toContainText('2024 — 2026');
   const first = page.getByRole('tab', { name: 'MobiliAI' });
   await first.click();
   await page.getByRole('button', { name: 'Ver tela 3' }).click();
@@ -20,9 +22,35 @@ test('projects support keyboard selection, gallery and real destinations', async
   await expect(
     page.getByRole('link', { name: 'Ver Projeto', exact: true }),
   ).toHaveAttribute('href', 'https://thornfield-a.vercel.app');
+  await page.keyboard.press('Home');
+  await expect(page.getByRole('tab', { name: 'Camera Jovi' })).toBeFocused();
+  await expect(
+    page.getByRole('tab', { name: 'Camera Jovi 2026' }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('img', { name: 'Camera Jovi — tela da câmera' }),
+  ).toBeVisible();
+  await page.getByRole('button', { name: 'Ver tela 2' }).click();
+  await expect(
+    page.getByRole('img', { name: 'Camera Jovi — landing page' }),
+  ).toBeVisible();
+  await expect(page.getByRole('tabpanel')).toContainText('flashcards');
+  await expect(
+    page.getByRole('link', { name: 'Ver Código', exact: true }),
+  ).toHaveAttribute('href', 'https://github.com/CameraJovi/FrontCameraJovi');
+  await expect(
+    page.getByRole('link', { name: 'Ver Projeto', exact: true }),
+  ).toHaveAttribute('href', 'https://front-camera-jovi.vercel.app/');
+  await expect(
+    page.getByRole('link', { name: 'Ver Landing Page' }),
+  ).toHaveAttribute('href', 'https://landingpage-iota-indol.vercel.app/');
+  await expect(
+    page.getByRole('link', { name: 'Código da Landing Page' }),
+  ).toHaveCount(0);
   await page.keyboard.press('End');
   await expect(page.getByRole('tabpanel')).toContainText('NeoBank');
   await page.keyboard.press('Home');
+  await page.keyboard.press('ArrowRight');
   await expect(
     page.getByRole('img', { name: 'MobiliAI — tela 1' }),
   ).toBeVisible();

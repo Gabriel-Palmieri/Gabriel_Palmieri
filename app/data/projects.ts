@@ -1,5 +1,26 @@
 export const projects = [
   {
+    id: 'camera-jovi',
+    key: 'cameraJovi',
+    title: 'Camera Jovi',
+    year: '2026',
+    images: ['/assets/Celular.png', '/assets/image.png'],
+    github: 'https://github.com/CameraJovi/FrontCameraJovi',
+    live: 'https://front-camera-jovi.vercel.app/',
+    landingLive: 'https://landingpage-iota-indol.vercel.app/',
+    stack: [
+      'Next.js',
+      'React',
+      'Tailwind CSS',
+      'Python',
+      'FastAPI',
+      'Google Gemini',
+      'Tesseract.js',
+      'Lucide',
+      'Playwright',
+    ],
+  },
+  {
     id: 'mobiliai',
     key: 'rimac',
     title: 'MobiliAI',
