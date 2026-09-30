@@ -11,7 +11,7 @@ module.exports = {
         accent: 'var(--accent)',
         line: 'var(--line)',
       },
-      fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+      fontFamily: { sans: ['Arial', 'Helvetica', 'sans-serif'] },
       transitionTimingFunction: { 'out-expo': 'var(--ease)' },
       animation: {
         'change-project': 'changeProject 400ms var(--ease)',

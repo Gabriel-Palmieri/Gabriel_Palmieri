@@ -10,22 +10,22 @@ colors:
   line: '#363b43'
 typography:
   display:
-    fontFamily: 'Space Grotesk, sans-serif'
+    fontFamily: 'Arial, Helvetica, sans-serif'
     fontSize: 'clamp(64px, 7.2vw, 96px)'
     fontWeight: 500
     lineHeight: 1.02
     letterSpacing: '-0.04em'
   headline:
-    fontFamily: 'Space Grotesk, sans-serif'
+    fontFamily: 'Arial, Helvetica, sans-serif'
     fontSize: '25px'
     fontWeight: 500
     letterSpacing: '-0.025em'
   body:
-    fontFamily: 'Space Grotesk, sans-serif'
+    fontFamily: 'Arial, Helvetica, sans-serif'
     fontSize: '15px'
     lineHeight: 1.7
   label:
-    fontFamily: 'Space Grotesk, sans-serif'
+    fontFamily: 'Arial, Helvetica, sans-serif'
     fontSize: '12px'
 rounded:
   control: '5px'
@@ -64,7 +64,7 @@ Muted periwinkle is the single primary accent, used for punctuation, links, sele
 
 ## Typography
 
-Space Grotesk is self-hosted at weights 400, 500, 600 and 700. Display and section headings use medium weight and tight tracking; body copy stays regular, with semibold roles and controls. Supporting labels use small sentence-case text. Project titles use 28px with a 1.2 line height. Long about copy is limited to 74ch. Numeric gallery labels use tabular figures.
+Arial with Helvetica fallback restores the typeface used before Space Grotesk. Display and section headings use medium weight; body copy stays regular, with semibold roles and controls. Supporting labels use small sentence-case text. Project titles use 28px with a 1.2 line height. Long about copy is limited to 74ch. Numeric gallery labels use tabular figures.
 
 ## Layout
 
