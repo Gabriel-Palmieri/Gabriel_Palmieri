@@ -15,7 +15,7 @@ const groups = [
     ],
   },
   { label: 'Back-end', keys: ['nodejs', 'nestjs', 'python', 'php', 'prisma'] },
-  { label: 'data', keys: ['postgresql', 'mysql', 'firebase', 'docker', 'git'] },
+  { label: 'data', keys: ['postgresql', 'mysql', 'git'] },
   { label: 'Mobile', keys: ['reactnative', 'flutter'] },
 ];
 export function Skills() {
