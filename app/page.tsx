@@ -149,6 +149,7 @@ export default function Home() {
               {t('about.intro')}
             </p>
             <p>{t('about.description')}</p>
+            <p>{t('about.education')}</p>
             <p>{t('about.approach')}</p>
             <details className="mt-7 border-t border-line [&_dl]:grid [&_dl]:grid-cols-2 [&_dl]:gap-6 [&_dl]:pt-3.5 [&_dt]:mb-1.5 [&_dt]:text-[13px] [&_dd]:text-[12px] [&_dd]:text-muted max-[760px]:[&_dl]:grid-cols-1 [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[12px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
               <summary>

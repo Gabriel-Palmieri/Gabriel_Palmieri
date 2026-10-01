@@ -16,6 +16,8 @@ export const en = {
       'I’m Gabriel, a full stack developer. I work on interfaces, APIs, and mobile applications.',
     description:
       'On the front end, I use React, Next.js, and TypeScript. On the back end, Node.js, Express, and relational databases such as PostgreSQL and MySQL. I also build with React Native and integrate systems.',
+    education:
+      'I graduated in Systems Analysis and Development from SENAI and am currently studying Software Engineering at FIAP.',
     approach:
       'I enjoy working from interface to deployment, with attention to accessibility, performance, and usability. Learning and exchanging ideas with the team are part of how I work.',
   },

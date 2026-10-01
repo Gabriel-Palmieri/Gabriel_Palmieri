@@ -16,6 +16,8 @@ export const pt = {
       'Sou Gabriel, desenvolvedor full stack. Trabalho com interfaces, APIs e aplicações mobile.',
     description:
       'No front-end, uso React, Next.js e TypeScript. No back-end, Node.js, Express e bancos relacionais, como PostgreSQL e MySQL. Também desenvolvo com React Native e faço integrações entre sistemas.',
+    education:
+      'Sou formado em Análise e Desenvolvimento de Sistemas pelo SENAI e atualmente curso Engenharia de Software na FIAP.',
     approach:
       'Gosto de acompanhar o desenvolvimento da interface ao deploy, com atenção à acessibilidade, performance e usabilidade. Aprender e trocar ideias com a equipe fazem parte do meu jeito de trabalhar.',
   },
