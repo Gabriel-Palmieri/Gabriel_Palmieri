@@ -38,10 +38,10 @@ export function Navbar() {
           aria-label={
             language === 'pt' ? 'Navegação principal' : 'Main navigation'
           }
-          className={`ml-auto flex items-center gap-8 [&_a]:py-3 [&_a]:text-[13px] [&_a]:text-muted [&_a]:transition-colors [&_a]:duration-[160ms] [&_a:hover]:text-foreground max-[760px]:hidden max-[760px]:absolute max-[760px]:top-[72px] max-[760px]:inset-x-0 max-[760px]:px-5 max-[760px]:pt-4 max-[760px]:pb-6 max-[760px]:bg-background max-[760px]:border-b max-[760px]:border-line max-[760px]:[&_a]:text-[16px] ${open ? 'max-[760px]:!flex max-[760px]:flex-col max-[760px]:items-stretch max-[760px]:gap-0' : ''}`}
+          className={`ml-auto flex items-center gap-8 [&_a]:py-3 [&_a]:text-[13px] [&_a]:text-muted [&_a]:transition-colors [&_a]:duration-[160ms] [&_a:hover]:text-foreground max-[760px]:hidden max-[760px]:absolute max-[760px]:top-[72px] max-[760px]:inset-x-0 max-[760px]:px-5 max-[760px]:pt-4 max-[760px]:pb-6 max-[760px]:bg-background max-[760px]:border-b max-[760px]:border-line max-[760px]:[&_a]:text-[16px] ${open ? 'mobile-nav-open max-[760px]:!flex max-[760px]:flex-col max-[760px]:items-stretch max-[760px]:gap-0' : ''}`}
         >
           {['projects', 'about', 'tech', 'contact'].map((key) => (
-            <a key={key} href={`#${key}`} onClick={() => setOpen(false)}>
+            <a key={key} className="nav-link" href={`#${key}`} onClick={() => setOpen(false)}>
               {t(`navigation.${key}`)}
             </a>
           ))}

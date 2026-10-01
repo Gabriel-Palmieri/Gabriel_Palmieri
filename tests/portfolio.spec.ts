@@ -141,3 +141,25 @@ test('navigation and responsive composition', async ({ page }, testInfo) => {
     fullPage: true,
   });
 });
+
+test('motion is present when allowed and removed when reduced', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  await expect(page.locator('#hero-title')).toHaveCSS(
+    'animation-name',
+    'heroReveal',
+  );
+  await page.getByRole('tab', { name: 'MobiliAI' }).click();
+  await expect(page.getByRole('tabpanel')).toHaveCSS(
+    'animation-name',
+    'changeProject',
+  );
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('#hero-title')).toHaveCSS('animation-name', 'none');
+  await expect(page.getByRole('tab', { name: 'MobiliAI' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+});

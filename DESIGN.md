@@ -84,7 +84,7 @@ Controls have restrained rounded corners, image frames slightly softer corners. 
 
 - Primary actions pair pale filled backgrounds with dark text, changing to accent on hover. Inline links use quiet underlines. Every keyboard focus target receives a 2px accent outline with a 5px offset.
 - Project tabs use an accent bottom border and raised surface tone when selected. Left/right arrows, Home and End navigate the tab list. Selection resets the manually controlled gallery to its first image; there is no autoplay.
-- Project changes animate a short horizontal arrival (400ms); image changes fade (320ms). Hero text arrives vertically (800ms and 1000ms). Small hover transitions use 160–250ms. Reduced-motion preference disables transitions, animations and smooth scrolling.
+- The hero name reveals through a short text crop (700ms), followed by its supporting copy (550ms). Project tabs draw the selected underline (280ms); project changes arrive horizontally (400ms), and image changes reveal the next screenshot (320ms). The mobile menu opens through a short crop (240ms). Reduced-motion preference disables animations, transitions and smooth scrolling while preserving selected and open states.
 - Native disclosure elements show feature and soft-skill details, rotating the plus indicator when open.
 - Form fields use a surface fill, thin line border and muted placeholders. Hover strengthens the border; focus uses the global outline. Status copy appears beside the action and distinguishes errors with pale red. Disabled buttons use reduced opacity and a waiting cursor.
 - Navigation combines compact links, a language control and a mobile menu button. Preserve Portuguese and English labels, visible keyboard focus, and the skip link.

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import { Navbar } from './components/Navbar';
 import { ProjectShowcase } from './components/ProjectShowcase';
@@ -13,6 +14,27 @@ const projectYears = projects.map(({ year }) => Number(year));
 export default function Home() {
   const { t, language } = useLanguage();
   const english = language === 'en';
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+
+    const elements = document.querySelectorAll<HTMLElement>('[data-scroll-reveal]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('scroll-reveal-hidden', !entry.isIntersecting);
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => {
+      observer.disconnect();
+      elements.forEach((element) => element.classList.remove('scroll-reveal-hidden'));
+    };
+  }, []);
+
   return (
     <>
       <a
@@ -31,8 +53,10 @@ export default function Home() {
           className="border-b border-line pt-[92px] pb-16 min-[1600px]:pt-[100px] [&_h1]:text-[clamp(56px,7.2vw,96px)] [&_h1]:font-medium [&_h1]:leading-[1.1] [&_h1]:tracking-[-0.04em] max-[760px]:pt-14 max-[760px]:pb-9 max-[760px]:[&_h1]:max-w-[9ch] max-[760px]:[&_h1]:text-[clamp(44px,11vw,72px)]"
           aria-labelledby="hero-title"
         >
-          <h1 id="hero-title">Gabriel Palmieri</h1>
-          <div className="mt-8 flex items-end justify-between gap-8 max-[760px]:mt-6 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-6">
+          <h1 id="hero-title" className="hero-reveal">
+            Gabriel Palmieri
+          </h1>
+          <div className="hero-support mt-8 flex items-end justify-between gap-8 max-[760px]:mt-6 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-6">
             <div>
               <p className="mb-1.5 text-[18px] font-medium max-[760px]:text-[16px]">
                 {t('hero.role')}
@@ -68,20 +92,22 @@ export default function Home() {
           className="pt-[46px] max-[760px]:pt-8"
           aria-labelledby="projects-title"
         >
-          <div className="mb-[26px] flex items-baseline justify-between gap-5 [&_h2]:text-[25px] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&>span]:text-[12px] [&>span]:tabular-nums max-[760px]:mb-5 max-[760px]:[&_h2]:text-[21px] max-[760px]:[&>span]:text-[10px] max-[380px]:gap-2 max-[380px]:[&_h2]:text-[19px]">
+          <div data-scroll-reveal className="scroll-reveal mb-[26px] flex items-baseline justify-between gap-5 [&_h2]:text-[25px] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&>span]:text-[12px] [&>span]:tabular-nums max-[760px]:mb-5 max-[760px]:[&_h2]:text-[21px] max-[760px]:[&>span]:text-[10px] max-[380px]:gap-2 max-[380px]:[&_h2]:text-[19px]">
             <h2 id="projects-title">{t('projects.title')}</h2>
             <span className="text-muted">
               {Math.min(...projectYears)} — {Math.max(...projectYears)}
             </span>
           </div>
-          <ProjectShowcase />
+          <div data-scroll-reveal className="scroll-reveal">
+            <ProjectShowcase />
+          </div>
         </section>
         <section
           id="about"
           className="mt-[90px] grid grid-cols-[minmax(240px,0.8fr)_minmax(0,1.65fr)] items-start gap-[clamp(48px,7vw,100px)] border-t border-line pt-20 max-[1100px]:gap-[50px] max-[760px]:mt-16 max-[760px]:pt-12 max-[760px]:grid-cols-1 max-[760px]:gap-8"
           aria-labelledby="about-title"
         >
-          <div className="max-w-[300px] max-[760px]:w-60 max-[760px]:max-w-full">
+          <div data-scroll-reveal className="scroll-reveal max-w-[300px] max-[760px]:w-60 max-[760px]:max-w-full">
             <Image
               src="/me.jpeg"
               alt="Gabriel Palmieri"
@@ -117,7 +143,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="[&_h2]:mb-6 [&_h2]:text-[clamp(30px,3vw,40px)] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&_h2]:leading-[1.2] [&>p]:max-w-[65ch] [&>p]:text-muted [&>p]:leading-[1.8] [&>p]:text-[15px] [&>p+p]:mt-[18px] max-[760px]:[&_h2]:text-[30px] max-[760px]:[&_h2]:mb-5">
+          <div data-scroll-reveal className="scroll-reveal [&_h2]:mb-6 [&_h2]:text-[clamp(30px,3vw,40px)] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&_h2]:leading-[1.2] [&>p]:max-w-[65ch] [&>p]:text-muted [&>p]:leading-[1.8] [&>p]:text-[15px] [&>p+p]:mt-[18px] max-[760px]:[&_h2]:text-[30px] max-[760px]:[&_h2]:mb-5">
             <h2 id="about-title">{t('about.title')}</h2>
             <p className="!text-foreground !text-[21px] tracking-[-0.02em] !leading-[1.6] !max-w-[46ch] max-[760px]:!text-[20px]">
               {t('about.intro')}
@@ -153,7 +179,7 @@ export default function Home() {
           className="grid grid-cols-[1fr_1.3fr] gap-[100px] border-t border-line pt-[82px] pb-[100px] max-[1100px]:gap-[50px] max-[760px]:grid-cols-1 max-[760px]:pt-12 max-[760px]:pb-16 max-[760px]:gap-9"
           aria-labelledby="contact-title"
         >
-          <div className="[&_h2]:max-w-[10ch] [&_h2]:text-[clamp(32px,3.5vw,48px)] [&_h2]:font-medium [&_h2]:tracking-[-0.03em] [&_h2]:leading-[1.15] [&_p]:my-6 [&_p]:max-w-[35ch] [&_p]:text-[14px] [&_p]:text-muted max-[760px]:[&_h2]:max-w-[15ch] max-[760px]:[&_h2]:text-[38px] max-[760px]:[&_p]:max-w-[42ch] max-[760px]:[&_p]:my-[18px]">
+          <div data-scroll-reveal className="scroll-reveal [&_h2]:max-w-[10ch] [&_h2]:text-[clamp(32px,3.5vw,48px)] [&_h2]:font-medium [&_h2]:tracking-[-0.03em] [&_h2]:leading-[1.15] [&_p]:my-6 [&_p]:max-w-[35ch] [&_p]:text-[14px] [&_p]:text-muted max-[760px]:[&_h2]:max-w-[15ch] max-[760px]:[&_h2]:text-[38px] max-[760px]:[&_p]:max-w-[42ch] max-[760px]:[&_p]:my-[18px]">
             <h2 id="contact-title">
               {t('contact.title')}
               <span className="text-accent">.</span>
@@ -168,7 +194,9 @@ export default function Home() {
               {english ? 'Talk on LinkedIn' : 'Conversar pelo LinkedIn'}
             </a>
           </div>
-          <ContactForm />
+          <div data-scroll-reveal className="scroll-reveal">
+            <ContactForm />
+          </div>
         </section>
       </main>
       <footer

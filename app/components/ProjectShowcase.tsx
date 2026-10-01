@@ -43,7 +43,7 @@ export function ProjectShowcase() {
       <div
         role="tablist"
         aria-label={t('projects.title')}
-        className="mb-[30px] flex gap-1 border-b border-line [&_button]:flex [&_button]:flex-1 [&_button]:justify-between [&_button]:gap-3 [&_button]:px-[18px] [&_button]:py-4 [&_button]:border-0 [&_button]:border-b-2 [&_button]:border-transparent [&_button]:bg-transparent [&_button]:text-left [&_button]:text-[14px] [&_button]:text-muted [&_button]:transition-colors [&_button]:duration-[180ms] [&_button_span]:self-center [&_button_span]:text-[11px] [&_button_span]:tabular-nums [&_button:hover]:bg-surface [&_button:hover]:text-foreground [&_button[aria-selected=true]]:text-foreground [&_button[aria-selected=true]]:border-accent [&_button[aria-selected=true]]:bg-surface max-[760px]:gap-0 max-[760px]:mb-[22px] max-[760px]:[&_button]:px-1.5 max-[760px]:[&_button]:py-3.5 max-[760px]:[&_button]:text-[11px] max-[760px]:[&_button]:justify-center max-[760px]:[&_button]:whitespace-nowrap max-[760px]:[&_button_span]:hidden"
+        className="mb-[30px] flex gap-1 border-b border-line [&_button]:flex [&_button]:flex-1 [&_button]:justify-between [&_button]:gap-3 [&_button]:px-[18px] [&_button]:py-4 [&_button]:border-0 [&_button]:border-b-2 [&_button]:border-transparent [&_button]:bg-transparent [&_button]:text-left [&_button]:text-[14px] [&_button]:text-muted [&_button]:transition-colors [&_button]:duration-[180ms] [&_button_span]:self-center [&_button_span]:text-[11px] [&_button_span]:tabular-nums [&_button:hover]:bg-surface [&_button:hover]:text-foreground [&_button[aria-selected=true]]:text-foreground [&_button[aria-selected=true]]:bg-surface max-[760px]:gap-0 max-[760px]:mb-[22px] max-[760px]:[&_button]:px-1.5 max-[760px]:[&_button]:py-3.5 max-[760px]:[&_button]:text-[11px] max-[760px]:[&_button]:justify-center max-[760px]:[&_button]:whitespace-nowrap max-[760px]:[&_button_span]:hidden"
       >
         {projects.map((item, index) => (
           <button
@@ -59,6 +59,7 @@ export function ProjectShowcase() {
             }}
             onClick={() => select(index)}
             onKeyDown={(event) => navigate(event, index)}
+            className="project-tab"
           >
             {item.title}
             {item.year && <span>{item.year}</span>}
