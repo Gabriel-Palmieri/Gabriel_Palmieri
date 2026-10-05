@@ -19,7 +19,7 @@ export function InitialLoading({ children }: { children: ReactNode }) {
     const minimum = window.setTimeout(() => {
       minimumElapsed = true;
       finish();
-    }, 1200);
+    }, 650);
     const onLoad = () => {
       pageLoaded = true;
       finish();

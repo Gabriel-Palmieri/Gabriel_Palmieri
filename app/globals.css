@@ -100,6 +100,10 @@
     animation: heroReveal 700ms var(--ease) both;
   }
 
+  .loading-line {
+    animation: loadingLine 1100ms var(--ease) infinite;
+  }
+
   .hero-support {
     animation: heroSupport 550ms var(--ease) 130ms both;
   }
@@ -149,7 +153,9 @@
   }
 
   .scroll-reveal {
-    transition: opacity 440ms var(--ease), transform 440ms var(--ease);
+    transition:
+      opacity 440ms var(--ease),
+      transform 440ms var(--ease);
   }
 
   .scroll-reveal-hidden {
@@ -158,7 +164,9 @@
   }
 
   .skill-item {
-    transition: color 180ms ease, transform 240ms var(--ease);
+    transition:
+      color 180ms ease,
+      transform 240ms var(--ease);
   }
 
   .skill-item img {
@@ -222,6 +230,18 @@
   }
 }
 
+@keyframes loadingLine {
+  0% {
+    transform: scaleX(0.08);
+    opacity: 0.65;
+  }
+  65%,
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 @keyframes navOpen {
   from {
     clip-path: inset(0 0 100% 0);
@@ -260,18 +280,5 @@
   to {
     opacity: 1;
     clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes compose {
-  0%,
-  100% {
-    transform: scaleX(0.28);
-    opacity: 0.6;
-  }
-  45%,
-  60% {
-    transform: scaleX(1);
-    opacity: 1;
   }
 }
