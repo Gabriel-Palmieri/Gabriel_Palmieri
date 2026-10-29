@@ -56,11 +56,11 @@ components:
 
 A minimal, technical, sober dark portfolio. Large left-aligned typography, quiet controls and real screenshots establish the visual identity. The direction comes from the user's brief and the implemented surface; no separate creative metaphor was chosen.
 
-Source of truth: `tailwind.config.js`, global tokens in `app/globals.css`, and utility classes in `app/page.tsx` and `app/components/`. This document records the implemented system, not additional product claims.
+Source of truth: `tailwind.config.js` for theme tokens and animation keyframes, global base rules in `app/globals.css`, and Tailwind utility classes in `app/page.tsx` and `app/components/`. Component layouts, interaction states and responsive rules belong in Tailwind utilities rather than global CSS. This document records the implemented system, not additional product claims.
 
 ## Colors
 
-Muted periwinkle is the single primary accent, used for punctuation, links, selected indicators and focus. Graphite background and surface establish hierarchy; pale foreground carries headings, muted grey carries supporting text, and the line token separates sections. Images preserve their source colors. Form errors use a local pale red treatment.
+Muted periwinkle is the single primary accent, used for punctuation, links, selected indicators and focus. Graphite background and surface establish hierarchy; pale foreground carries headings, muted grey carries supporting text, and the line token separates sections. Images preserve their source colors.
 
 ## Typography
 
@@ -70,7 +70,7 @@ Arial with Helvetica fallback restores the typeface used before Space Grotesk. D
 
 The centered container is capped at 1240px with 56px side gutters. Desktop hero and content sections use asymmetric two-column grids. Project imagery receives more width than its description. Horizontal dividers and generous section spacing create structure.
 
-At 1100px and below, gutters become 32px and grid gaps tighten. At 760px and below, gutters become 20px, major sections stack, the header becomes 72px tall, and navigation opens as a vertical panel. Project tabs remain a row, with year labels hidden; screenshots retain their aspect ratio. Mobile display type uses `clamp(62px, 14vw, 88px)`. Form inputs become 16px. At 380px and below, paired form fields and skill rows stack. At 1600px and above, the hero gains top spacing.
+At 1100px and below, gutters become 32px and grid gaps tighten. At 760px and below, gutters become 20px, major sections stack, the header becomes 72px tall, and navigation opens as a vertical panel. Project tabs remain a row, with year labels hidden; screenshots retain their aspect ratio. Mobile display type uses `clamp(62px, 14vw, 88px)`. At 380px and below, skill rows stack. At 1600px and above, the hero gains top spacing.
 
 ## Elevation & Depth
 
@@ -82,11 +82,20 @@ Controls have restrained rounded corners, image frames slightly softer corners. 
 
 ## Components
 
+### Interactive portfolio motion
+
+- The hero name is static, without entrance animation or pointer tracking.
+- Project selection updates immediately with a single 300ms directional entrance and a sliding underline. No delayed exit callback or nested copy entrance runs. Rapid selection always shows the last requested project. Previews follow the original image aspect ratio without a fixed-height frame or letterbox bands.
+- Screenshot previews open a native modal dialog with a dark translucent backdrop and 24px background blur, a dedicated title and counter header, a viewport-fitted image area, and a separate thumbnail and arrow navigation row. The gallery expands from the source image and supports arrow-key navigation. Escape closes it, body scrolling is restored and focus returns to the preview. Reduced motion skips spatial animation.
+- Multi-image previews support horizontal pointer dragging with a 45px threshold while preserving vertical touch scrolling. A click opens the gallery; a completed drag does not.
+- Technologies are plain icon and text items without project popovers or navigation.
+- “Ver em ação” / “Try live” opens the existing published application. No recorded demonstrations are bundled; adding video requires real recordings.
+- Section content fades and shifts by 18px as it enters and leaves the viewport in either scroll direction, using IntersectionObserver. Exits move toward the nearest viewport edge. Focused content stays visible; reduced motion keeps all content readable without spatial effects.
+
 - Primary actions pair pale filled backgrounds with dark text, changing to accent on hover. Inline links use quiet underlines. Every keyboard focus target receives a 2px accent outline with a 5px offset.
 - Project tabs use an accent bottom border and raised surface tone when selected. Left/right arrows, Home and End navigate the tab list. Selection resets the manually controlled gallery to its first image; there is no autoplay.
-- The hero name reveals through a short text crop (700ms), followed by its supporting copy (550ms). Project tabs draw the selected underline (280ms); project changes arrive horizontally (400ms), and image changes reveal the next screenshot (320ms). The mobile menu opens through a short crop (240ms). Reduced-motion preference disables animations, transitions and smooth scrolling while preserving selected and open states.
+- The hero name stays static; supporting copy enters over 550ms. Project tabs share a sliding underline (420ms); project changes arrive horizontally (300ms), and image changes reveal the next screenshot (320ms). The mobile menu opens through a short crop (240ms). Reduced-motion preference disables animations, transitions and smooth scrolling while preserving selected and open states.
 - Native disclosure elements show feature and soft-skill details, rotating the plus indicator when open.
-- Form fields use a surface fill, thin line border and muted placeholders. Hover strengthens the border; focus uses the global outline. Status copy appears beside the action and distinguishes errors with pale red. Disabled buttons use reduced opacity and a waiting cursor.
 - Navigation combines compact links, a language control and a mobile menu button. Preserve Portuguese and English labels, visible keyboard focus, and the skip link.
 
 ## Do's and Don'ts
@@ -96,3 +105,7 @@ Controls have restrained rounded corners, image frames slightly softer corners. 
 - Do preserve keyboard controls and reduced-motion behavior when extending interactions.
 - Don't add decorative terminals, floating technology clouds or artificial loading screens; the agreed surface direction excludes them.
 - Don't introduce new brand colors or a competing font system without revising the design direction.
+
+## Direct contact
+
+Contact follows the asymmetric column grid shared by About and Technologies. A compact introduction sits beside a mailto address row and two supporting profile links. The title has no trailing punctuation, and there is no repeated name or role in this section. Thin rules, typography, small technical icons and accent hover underlines carry the identity; there is no filled email panel or oversized invitation. Links remain gabriel1208.palmieri@gmail.com, LinkedIn and GitHub. All styles use Tailwind utilities and preserve repeatable scroll reveals and reduced-motion behavior.

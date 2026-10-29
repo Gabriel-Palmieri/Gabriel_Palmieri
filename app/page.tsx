@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Navbar } from './components/Navbar';
 import { ProjectShowcase } from './components/ProjectShowcase';
 import { Skills } from './components/Skills';
-import ContactForm from './components/ContactForm';
+import { Contact } from './components/Contact';
 import { useLanguage } from './contexts/LanguageContext';
 import { projects, socialLinks } from './data/projects';
 
@@ -18,20 +18,37 @@ export default function Home() {
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return;
 
-    const elements = document.querySelectorAll<HTMLElement>('[data-scroll-reveal]');
+    const elements = document.querySelectorAll<HTMLElement>(
+      '[data-scroll-reveal]',
+    );
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle('scroll-reveal-hidden', !entry.isIntersecting);
+          const element = entry.target as HTMLElement;
+          const visible =
+            entry.isIntersecting || element.contains(document.activeElement);
+          if (!visible) {
+            element.style.setProperty(
+              '--scroll-offset',
+              entry.boundingClientRect.top < 0 ? '-18px' : '18px',
+            );
+          }
+          element.classList.toggle('scroll-reveal-hidden', !visible);
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0, rootMargin: '-4% 0px -4% 0px' },
     );
 
-    elements.forEach((element) => observer.observe(element));
+    elements.forEach((element) => {
+      if (element.getBoundingClientRect().top > window.innerHeight)
+        element.classList.add('scroll-reveal-hidden');
+      observer.observe(element);
+    });
     return () => {
       observer.disconnect();
-      elements.forEach((element) => element.classList.remove('scroll-reveal-hidden'));
+      elements.forEach((element) =>
+        element.classList.remove('scroll-reveal-hidden'),
+      );
     };
   }, []);
 
@@ -53,10 +70,8 @@ export default function Home() {
           className="border-b border-line pt-[92px] pb-16 min-[1600px]:pt-[100px] [&_h1]:text-[clamp(56px,7.2vw,96px)] [&_h1]:font-medium [&_h1]:leading-[1.1] [&_h1]:tracking-[-0.04em] max-[760px]:pt-14 max-[760px]:pb-9 max-[760px]:[&_h1]:max-w-[9ch] max-[760px]:[&_h1]:text-[clamp(44px,11vw,72px)]"
           aria-labelledby="hero-title"
         >
-          <h1 id="hero-title" className="hero-reveal">
-            Gabriel Palmieri
-          </h1>
-          <div className="hero-support mt-8 flex items-end justify-between gap-8 max-[760px]:mt-6 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-6">
+          <h1 id="hero-title">Gabriel Palmieri</h1>
+          <div className="animate-hero-support mt-8 flex items-end justify-between gap-8 max-[760px]:mt-6 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-6">
             <div>
               <p className="mb-1.5 text-[18px] font-medium max-[760px]:text-[16px]">
                 {t('hero.role')}
@@ -92,22 +107,31 @@ export default function Home() {
           className="pt-[46px] max-[760px]:pt-8"
           aria-labelledby="projects-title"
         >
-          <div data-scroll-reveal className="scroll-reveal mb-[26px] flex items-baseline justify-between gap-5 [&_h2]:text-[25px] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&>span]:text-[12px] [&>span]:tabular-nums max-[760px]:mb-5 max-[760px]:[&_h2]:text-[21px] max-[760px]:[&>span]:text-[10px] max-[380px]:gap-2 max-[380px]:[&_h2]:text-[19px]">
+          <div
+            data-scroll-reveal
+            className="transition-[opacity,transform] duration-[440ms] ease-out-expo [&.scroll-reveal-hidden]:translate-y-[var(--scroll-offset,18px)] [&.scroll-reveal-hidden]:opacity-0 motion-reduce:!transform-none motion-reduce:!opacity-100 mb-[26px] flex items-baseline justify-between gap-5 [&_h2]:text-[25px] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&>span]:text-[12px] [&>span]:tabular-nums max-[760px]:mb-5 max-[760px]:[&_h2]:text-[21px] max-[760px]:[&>span]:text-[10px] max-[380px]:gap-2 max-[380px]:[&_h2]:text-[19px]"
+          >
             <h2 id="projects-title">{t('projects.title')}</h2>
             <span className="text-muted">
               {Math.min(...projectYears)} — {Math.max(...projectYears)}
             </span>
           </div>
-          <div data-scroll-reveal className="scroll-reveal">
+          <div
+            data-scroll-reveal
+            className="transition-[opacity,transform] duration-[440ms] ease-out-expo [&.scroll-reveal-hidden]:translate-y-[var(--scroll-offset,18px)] [&.scroll-reveal-hidden]:opacity-0 motion-reduce:!transform-none motion-reduce:!opacity-100"
+          >
             <ProjectShowcase />
           </div>
         </section>
         <section
           id="about"
-          className="mt-[90px] grid grid-cols-[minmax(240px,0.8fr)_minmax(0,1.65fr)] items-start gap-[clamp(48px,7vw,100px)] border-t border-line pt-20 max-[1100px]:gap-[50px] max-[760px]:mt-16 max-[760px]:pt-12 max-[760px]:grid-cols-1 max-[760px]:gap-8"
+          className="mt-[90px] grid grid-cols-[minmax(240px,0.8fr)_minmax(0,1.65fr)] items-center gap-[clamp(48px,7vw,100px)] border-t border-line pt-20 max-[1100px]:gap-[50px] max-[760px]:mt-16 max-[760px]:pt-12 max-[760px]:grid-cols-1 max-[760px]:gap-8"
           aria-labelledby="about-title"
         >
-          <div data-scroll-reveal className="scroll-reveal max-w-[300px] max-[760px]:w-60 max-[760px]:max-w-full">
+          <div
+            data-scroll-reveal
+            className="transition-[opacity,transform] duration-[440ms] ease-out-expo [&.scroll-reveal-hidden]:translate-y-[var(--scroll-offset,18px)] [&.scroll-reveal-hidden]:opacity-0 motion-reduce:!transform-none motion-reduce:!opacity-100 justify-self-center max-w-[300px] max-[760px]:w-60 max-[760px]:max-w-full"
+          >
             <Image
               src="/me.jpeg"
               alt="Gabriel Palmieri"
@@ -143,15 +167,18 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div data-scroll-reveal className="scroll-reveal [&_h2]:mb-6 [&_h2]:text-[clamp(30px,3vw,40px)] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&_h2]:leading-[1.2] [&>p]:max-w-[65ch] [&>p]:text-muted [&>p]:leading-[1.8] [&>p]:text-[15px] [&>p+p]:mt-[18px] max-[760px]:[&_h2]:text-[30px] max-[760px]:[&_h2]:mb-5">
+          <div
+            data-scroll-reveal
+            className="mx-auto w-full max-w-[640px] transition-[opacity,transform] duration-[440ms] ease-out-expo [&.scroll-reveal-hidden]:translate-y-[var(--scroll-offset,18px)] [&.scroll-reveal-hidden]:opacity-0 motion-reduce:!transform-none motion-reduce:!opacity-100 [&>p]:text-justify [&>p]:hyphens-none [&>p]:break-normal [&>p]:text-[15px] [&>p]:leading-7 [&>p]:text-muted [&>p+p]:mt-5 [&_h2]:mb-7 [&_h2]:text-center [&_h2]:text-[clamp(30px,3vw,40px)] [&_h2]:font-medium [&_h2]:tracking-[-0.025em] [&_h2]:leading-tight max-[760px]:[&_h2]:text-[30px]"
+          >
             <h2 id="about-title">{t('about.title')}</h2>
-            <p className="!text-foreground !text-[21px] tracking-[-0.02em] !leading-[1.6] !max-w-[46ch] max-[760px]:!text-[20px]">
+            <p className="!text-lg font-medium !leading-7 !text-foreground">
               {t('about.intro')}
             </p>
             <p>{t('about.description')}</p>
             <p>{t('about.education')}</p>
             <p>{t('about.approach')}</p>
-            <details className="mt-7 border-t border-line [&_dl]:grid [&_dl]:grid-cols-2 [&_dl]:gap-6 [&_dl]:pt-3.5 [&_dt]:mb-1.5 [&_dt]:text-[13px] [&_dd]:text-[12px] [&_dd]:text-muted max-[760px]:[&_dl]:grid-cols-1 [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[12px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
+            <details className="[&[open]>dl]:animate-detail-reveal mt-7 border-t border-line text-left [&_dl]:grid [&_dl]:grid-cols-2 [&_dl]:gap-6 [&_dl]:pt-3.5 [&_dt]:mb-1.5 [&_dt]:text-[13px] [&_dd]:text-[12px] [&_dd]:text-muted max-[760px]:[&_dl]:grid-cols-1 [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[12px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
               <summary>
                 {t('softSkills.title')}
                 <span aria-hidden="true">+</span>
@@ -175,30 +202,7 @@ export default function Home() {
           </div>
         </section>
         <Skills />
-        <section
-          id="contact"
-          className="grid grid-cols-[1fr_1.3fr] gap-[100px] border-t border-line pt-[82px] pb-[100px] max-[1100px]:gap-[50px] max-[760px]:grid-cols-1 max-[760px]:pt-12 max-[760px]:pb-16 max-[760px]:gap-9"
-          aria-labelledby="contact-title"
-        >
-          <div data-scroll-reveal className="scroll-reveal [&_h2]:max-w-[10ch] [&_h2]:text-[clamp(32px,3.5vw,48px)] [&_h2]:font-medium [&_h2]:tracking-[-0.03em] [&_h2]:leading-[1.15] [&_p]:my-6 [&_p]:max-w-[35ch] [&_p]:text-[14px] [&_p]:text-muted max-[760px]:[&_h2]:max-w-[15ch] max-[760px]:[&_h2]:text-[38px] max-[760px]:[&_p]:max-w-[42ch] max-[760px]:[&_p]:my-[18px]">
-            <h2 id="contact-title">
-              {t('contact.title')}
-              <span className="text-accent">.</span>
-            </h2>
-            <p>{t('contact.description')}</p>
-            <a
-              className="group inline-flex items-center gap-[18px] text-[13px] font-semibold underline decoration-line transition-colors duration-[160ms] hover:decoration-accent"
-              href="https://www.linkedin.com/in/gabriel-palmieri12/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {english ? 'Talk on LinkedIn' : 'Conversar pelo LinkedIn'}
-            </a>
-          </div>
-          <div data-scroll-reveal className="scroll-reveal">
-            <ContactForm />
-          </div>
-        </section>
+        <Contact />
       </main>
       <footer
         className={`mx-auto w-[min(1240px,calc(100%-112px))] max-[1100px]:w-[calc(100%-64px)] max-[760px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-5 border-t border-line pt-7 pb-9 text-[11px] text-muted max-[760px]:gap-4 max-[760px]:text-[10px] max-[760px]:[&>span:nth-child(2)]:hidden`}

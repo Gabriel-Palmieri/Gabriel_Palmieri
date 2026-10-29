@@ -75,19 +75,10 @@ export const pt = {
     },
   },
   contact: {
-    title: 'Entre em Contato',
+    title: 'Contato',
     description:
-      'Tem um projeto em mente? Vamos conversar sobre como posso ajudar a transformar suas ideias em realidade.',
-    name: 'Nome',
-    email: 'E-mail',
-    message: 'Mensagem',
-    send: 'Enviar Mensagem',
-    sending: 'Enviando...',
-    success: 'Mensagem enviada com sucesso!',
-    error: 'Erro ao enviar mensagem. Tente novamente.',
-    namePlaceholder: 'Seu nome',
-    emailPlaceholder: 'seu@email.com',
-    messagePlaceholder: 'Sua mensagem...',
+      'Uma ideia, uma oportunidade ou uma conversa sobre tecnologia. Fale comigo.',
+    emailLabel: 'E-mail',
   },
   softSkills: {
     title: 'Soft Skills',

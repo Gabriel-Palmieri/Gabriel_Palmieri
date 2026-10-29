@@ -1,6 +1,6 @@
 ﻿# Portfólio — Gabriel Palmieri
 
-Portfólio pessoal em Next.js 15, React 19 e TypeScript. Tema escuro, conteúdo em português e inglês, galeria de projetos e formulário com EmailJS.
+Portfólio pessoal em Next.js 15, React 19 e TypeScript. Tema escuro, conteúdo em português e inglês, galeria de projetos e contato direto por LinkedIn e GitHub.
 
 ## Desenvolvimento
 
@@ -20,7 +20,7 @@ npm run build
 npm run test:e2e
 ```
 
-Os testes usam Microsoft Edge no Windows; em outros sistemas, instale Chromium com `npx playwright install chromium`. A suíte verifica desktop e celular, navegação por teclado, idioma persistido, galeria, validação do formulário e falhas de envio sem enviar mensagens reais. Capturas locais ficam em `.impeccable/review/` e não são versionadas.
+Os testes usam Microsoft Edge no Windows; em outros sistemas, instale Chromium com `npx playwright install chromium`. A suíte verifica desktop e celular, navegação por teclado, idioma persistido, galeria, links diretos de contato sem enviar mensagens reais. Capturas locais ficam em `.impeccable/review/` e não são versionadas.
 
 ## Estrutura
 
@@ -36,16 +36,9 @@ Space Grotesk é servida localmente por `@fontsource/space-grotesk`. As animaç�
 
 ## Contato
 
-Configure no ambiente de deploy ou em `.env.local`:
+A seção oferece links diretos para LinkedIn e GitHub, sem formulário ou serviço de envio de mensagens.
 
-```dotenv
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=seu_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=seu_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=sua_public_key
-```
-
-Sem essas variáveis, o formulário preserva a mensagem digitada e oferece o LinkedIn como alternativa. O template mantém os campos `name`, `from_name`, `email`, `from_email`, `message`, `time`, `year` e `subject`.
-
+- [E-mail](mailto:gabriel1208.palmieri@gmail.com)
 - [GitHub](https://github.com/Gabriel-Palmieri)
 - [LinkedIn](https://www.linkedin.com/in/gabriel-palmieri12/)
 

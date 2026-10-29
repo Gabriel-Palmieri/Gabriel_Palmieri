@@ -1,0 +1,25 @@
+export const technologyIcons: Record<
+  string,
+  { file: string; invert?: boolean }
+> = {
+  'Next.js': { file: 'nextjs.svg', invert: true },
+  React: { file: 'react.svg' },
+  'Tailwind CSS': { file: 'tailwind.svg' },
+  Python: { file: 'python.svg' },
+  FastAPI: { file: 'fastapi.svg', invert: true },
+  'Google Gemini': { file: 'googlegemini.svg', invert: true },
+  'Tesseract.js': { file: 'tesseract.png' },
+  Lucide: { file: 'lucide.svg', invert: true },
+  Playwright: { file: 'playwright.svg' },
+  NestJS: { file: 'nestjs.svg' },
+  PostgreSQL: { file: 'postgresql.svg' },
+  'Prisma ORM': { file: 'prisma.svg', invert: true },
+  'OpenAI API': { file: 'openai.svg', invert: true },
+  TypeScript: { file: 'typescript.svg' },
+  Firebase: { file: 'firebase.svg' },
+  'Node.js': { file: 'nodejs.svg' },
+  MySQL: { file: 'mysql.svg' },
+  HTML5: { file: 'html.svg' },
+  CSS3: { file: 'css.svg' },
+  PHP: { file: 'php.svg' },
+};

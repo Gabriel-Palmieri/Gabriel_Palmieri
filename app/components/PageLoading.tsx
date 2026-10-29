@@ -23,7 +23,7 @@ export function PageLoading() {
           className="mt-9 h-px w-full overflow-hidden bg-line"
           aria-hidden="true"
         >
-          <span className="loading-line block h-full w-full origin-left bg-accent" />
+          <span className="animate-loading-line block h-full w-full origin-left bg-accent" />
         </div>
         <p className="mt-3 text-[12px] text-muted">
           {language === 'en' ? 'Loading portfolio' : 'Carregando portfólio'}

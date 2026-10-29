@@ -74,19 +74,10 @@ export const en = {
     },
   },
   contact: {
-    title: 'Get in Touch',
+    title: 'Contact',
     description:
-      "Have a project in mind? Let's talk about how I can help turn your ideas into reality.",
-    name: 'Name',
-    email: 'Email',
-    message: 'Message',
-    send: 'Send Message',
-    sending: 'Sending...',
-    success: 'Message sent successfully!',
-    error: 'Error sending message. Please try again.',
-    namePlaceholder: 'Your name',
-    emailPlaceholder: 'your@email.com',
-    messagePlaceholder: 'Your message...',
+      'An idea, an opportunity, or a conversation about technology. Get in touch.',
+    emailLabel: 'Email',
   },
   softSkills: {
     title: 'Soft Skills',

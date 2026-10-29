@@ -14,7 +14,7 @@ Portfólio pessoal de Gabriel Palmieri, desenvolvedor full stack. Apresenta proj
 
 - Conteúdo em português e inglês, com preferência de idioma persistida quando o navegador permite.
 - Quatro projetos do repositório: MobiliAI, Thornfield, Saldo Verde e NeoBank. Preservar links, tecnologias, descrições e imagens reais.
-- Formulário integrado ao EmailJS, dependente das variáveis de ambiente documentadas no README.
+- Contato direto por LinkedIn e GitHub, sem formulário ou dependência do EmailJS.
 - GitHub, LinkedIn e Instagram existentes como canais externos.
 - O usuário pediu uma interface minimalista, técnica e bonita, com animações e limpeza de código sem uso; confirmou a preferência por tema escuro mais sóbrio.
 
