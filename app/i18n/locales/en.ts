@@ -79,37 +79,19 @@ export const en = {
       'An idea, an opportunity, or a conversation about technology. Get in touch.',
     emailLabel: 'Email',
   },
-  softSkills: {
-    title: 'Soft Skills',
-    communication: {
-      title: 'Effective Communication',
+  trajectory: {
+    title: 'Education journey',
+    senai: {
+      period: '2024–2025',
+      institution: 'SENAI Armando de Arruda Pereira',
       description:
-        'Ability to express ideas clearly and objectively, facilitating teamwork and client interaction.',
+        'I began the technical program in Systems Analysis and Development in June 2024 and completed it in 2025. This marked the start of my education in the field and helped me build my foundation in systems development.',
     },
-    problemSolving: {
-      title: 'Problem Solving',
+    fiap: {
+      period: '2026–2029',
+      institution: 'FIAP',
       description:
-        'Skill in analyzing complex situations and finding creative and efficient solutions.',
-    },
-    teamwork: {
-      title: 'Teamwork',
-      description:
-        'Experience in effectively collaborating with different professional profiles, contributing to group success.',
-    },
-    adaptability: {
-      title: 'Adaptability',
-      description:
-        'Flexibility to deal with changes and ability to quickly learn new technologies and methodologies.',
-    },
-    timeManagement: {
-      title: 'Time Management',
-      description:
-        'Efficient organization and prioritization of tasks, meeting deadlines and maintaining high productivity.',
-    },
-    criticalThinking: {
-      title: 'Critical Thinking',
-      description:
-        'Ability to evaluate situations from different perspectives and make informed decisions.',
+        'In early 2026, I began my bachelor’s degree in Software Engineering, with expected graduation in 2029. This continues my education, with a focus on deepening my knowledge and broadening my understanding of software development.',
     },
   },
   tech: {

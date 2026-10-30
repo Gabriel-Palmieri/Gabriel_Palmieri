@@ -468,17 +468,28 @@ export function ProjectShowcase() {
               ))}
             </ul>
           </details>
-          <div className="grid grid-cols-2 gap-3 [&>a:last-child:nth-child(odd)]:col-span-2">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
             {[
-              { label: t('projects.viewCode'), href: project.github },
               ...(project.live
-                ? [{ label: t('projects.viewProject'), href: project.live }]
+                ? [
+                    {
+                      label: t('projects.viewProject'),
+                      href: project.live,
+                      primary: true,
+                    },
+                  ]
                 : []),
+              {
+                label: t('projects.viewCode'),
+                href: project.github,
+                primary: !project.live,
+              },
               ...('landingLive' in project
                 ? [
                     {
                       label: t('projects.viewLanding'),
                       href: project.landingLive,
+                      primary: false,
                     },
                   ]
                 : []),
@@ -488,9 +499,11 @@ export function ProjectShowcase() {
                 href={action.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-h-12 items-center justify-between gap-3 rounded-[5px] border border-line bg-surface px-4 py-3 text-xs font-semibold text-foreground transition-[border-color,background-color] duration-200 ease-out-expo hover:border-muted hover:bg-background hover:text-foreground active:translate-y-px"
+                className={`group inline-flex min-h-11 items-center gap-2.5 text-[13px] transition-colors duration-200 ease-out-expo hover:text-foreground ${action.primary ? 'font-semibold text-foreground' : 'font-normal text-muted'}`}
               >
-                {action.label}
+                <span className="relative py-1 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 after:ease-out-expo after:content-[''] group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100">
+                  {action.label}
+                </span>
                 <svg
                   aria-hidden="true"
                   width="16"

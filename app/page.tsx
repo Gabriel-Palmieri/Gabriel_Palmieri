@@ -176,25 +176,29 @@ export default function Home() {
               {t('about.intro')}
             </p>
             <p>{t('about.description')}</p>
-            <p>{t('about.education')}</p>
             <p>{t('about.approach')}</p>
-            <details className="[&[open]>dl]:animate-detail-reveal mt-7 border-t border-line text-left [&_dl]:grid [&_dl]:grid-cols-2 [&_dl]:gap-6 [&_dl]:pt-3.5 [&_dt]:mb-1.5 [&_dt]:text-[13px] [&_dd]:text-[12px] [&_dd]:text-muted max-[760px]:[&_dl]:grid-cols-1 [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[12px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
+            <details className="[&[open]>dl]:animate-detail-reveal mt-7 border-t border-line text-left [&_summary]:flex [&_summary]:justify-between [&_summary]:items-center [&_summary]:gap-5 [&_summary]:py-[13px] [&_summary]:text-[13px] [&_summary_span]:text-[22px] [&_summary_span]:leading-none [&_summary_span]:text-muted [&_summary_span]:transition-transform [&_summary_span]:duration-200 [&[open]_summary_span]:rotate-45">
               <summary>
-                {t('softSkills.title')}
+                {t('trajectory.title')}
                 <span aria-hidden="true">+</span>
               </summary>
-              <dl>
-                {[
-                  'communication',
-                  'problemSolving',
-                  'teamwork',
-                  'adaptability',
-                  'timeManagement',
-                  'criticalThinking',
-                ].map((key) => (
-                  <div key={key}>
-                    <dt>{t(`softSkills.${key}.title`)}</dt>
-                    <dd>{t(`softSkills.${key}.description`)}</dd>
+              <dl className="grid gap-6 pt-4 pb-3">
+                {['senai', 'fiap'].map((key) => (
+                  <div
+                    key={key}
+                    className="grid grid-cols-[96px_minmax(0,1fr)] gap-5 max-[380px]:grid-cols-1 max-[380px]:gap-2"
+                  >
+                    <dt className="text-xs leading-6 tabular-nums text-muted">
+                      {t(`trajectory.${key}.period`)}
+                    </dt>
+                    <dd>
+                      <p className="text-[13px] font-medium leading-6">
+                        {t(`trajectory.${key}.institution`)}
+                      </p>
+                      <p className="mt-1 text-[13px] leading-6 text-muted">
+                        {t(`trajectory.${key}.description`)}
+                      </p>
+                    </dd>
                   </div>
                 ))}
               </dl>

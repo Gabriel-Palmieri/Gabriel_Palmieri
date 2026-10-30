@@ -80,37 +80,19 @@ export const pt = {
       'Uma ideia, uma oportunidade ou uma conversa sobre tecnologia. Fale comigo.',
     emailLabel: 'E-mail',
   },
-  softSkills: {
-    title: 'Soft Skills',
-    communication: {
-      title: 'Comunicação Efetiva',
+  trajectory: {
+    title: 'Trajetória',
+    senai: {
+      period: '2024–2025',
+      institution: 'SENAI Armando de Arruda Pereira',
       description:
-        'Capacidade de expressar ideias de forma clara e objetiva, facilitando o trabalho em equipe e a interação com clientes.',
+        'Iniciei o curso técnico de Análise e Desenvolvimento de Sistemas em junho de 2024 e concluí em 2025. Essa etapa marcou o começo da minha formação na área e a construção da minha base em desenvolvimento de sistemas.',
     },
-    problemSolving: {
-      title: 'Resolução de Problemas',
+    fiap: {
+      period: '2026–2029',
+      institution: 'FIAP',
       description:
-        'Habilidade em analisar situações complexas e encontrar soluções criativas e eficientes.',
-    },
-    teamwork: {
-      title: 'Trabalho em Equipe',
-      description:
-        'Experiência em colaborar efetivamente com diferentes perfis de profissionais, contribuindo para o sucesso do grupo.',
-    },
-    adaptability: {
-      title: 'Adaptabilidade',
-      description:
-        'Flexibilidade para lidar com mudanças e capacidade de aprender rapidamente novas tecnologias e metodologias.',
-    },
-    timeManagement: {
-      title: 'Gestão do Tempo',
-      description:
-        'Organização e priorização eficiente de tarefas, cumprindo prazos e mantendo alta produtividade.',
-    },
-    criticalThinking: {
-      title: 'Pensamento Crítico',
-      description:
-        'Capacidade de avaliar situações de diferentes perspectivas e tomar decisões fundamentadas.',
+        'No começo de 2026, iniciei o bacharelado em Engenharia de Software, com previsão de conclusão em 2029. É a continuidade da minha formação, agora com foco em aprofundar meus conhecimentos e ampliar minha visão sobre o desenvolvimento de software.',
     },
   },
   tech: {
